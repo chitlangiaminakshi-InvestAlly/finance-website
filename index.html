@@ -3,588 +3,592 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinanceFlow - Blog Wireframe</title>
-    
+    <title>Investally - Financial Planning & Insights</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts (Inter) -->
+    <!-- Feather Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <!-- Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Feather Icons (for simple icons) -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
     <style>
         /* Apply Inter font family */
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Custom scrollbar for aesthetics */
-        ::-webkit-scrollbar {
-            width: 6px;
+        /* Custom styles for Tailwind's typography plugin */
+        .prose {
+            color: #374151; /* text-gray-700 */
         }
-        ::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 3px;
+        .prose h1, .prose h2, .prose h3 {
+            color: #111827; /* text-gray-900 */
         }
-        ::-webkit-scrollbar-track {
-            background-color: #f1f5f9;
+        .prose a {
+            color: #0d9488; /* text-teal-600 */
+        }
+        .prose strong {
+            color: #111827; /* text-gray-900 */
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50">
 
-    <!-- ===== HEADER / NAVIGATION ===== -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <i data-feather="bar-chart-2" class="text-blue-600"></i>
-                    <span class="ml-2 text-2xl font-bold text-slate-900">FinanceFlow</span>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex md:items-center md:space-x-6">
-                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('blog-list-view')">Blog</a>
-                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('calculators-view')">Calculators</a>
-                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition">Products</a>
-                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition">About Us</a>
-                </div>
-                
-                <!-- Subscribe Button -->
-                <div>
-                    <a href="#subscribe" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
-                        Subscribe
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button (placeholder) -->
-                <div class="md:hidden">
-                    <button class="text-slate-500 hover:text-slate-800">
-                        <i data-feather="menu"></i>
-                    </button>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- ===== MAIN CONTENT AREA ===== -->
-    <main id="app-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-
-        <!-- ===== VIEW 1: BLOG LIST (Default View) ===== -->
-        <div id="blog-list-view">
-            
-            <!-- Hero / Email Subscription -->
-            <section id="subscribe" class="bg-blue-600 rounded-lg shadow-lg p-8 md:p-12 text-center text-white mb-12">
-                <h1 class="text-3xl md:text-4xl font-bold mb-4">Get Smarter About Your Money.</h1>
-                <p class="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">Subscribe to our newsletter for free financial tips, market analysis, and strategies sent straight to your inbox.</p>
-                <form class="flex flex-col sm:flex-row max-w-lg mx-auto gap-3">
-                    <input type="email" placeholder="Enter your email" class="flex-grow w-full px-4 py-3 rounded-md text-slate-900 focus:ring-2 focus:ring-white" required>
-                    <button type="submit" class="flex-shrink-0 px-6 py-3 rounded-md font-semibold bg-white text-blue-600 hover:bg-blue-50 shadow-md transition">Sign Up</button>
-                </form>
-            </section>
-
-            <!-- Product Buttons -->
-            <section class="mb-12">
-                <h2 class="text-2xl font-bold text-slate-900 mb-4 text-center">Our Financial Products</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <a href="#" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
-                        <i data-feather="briefcase" class="text-blue-600 h-8 w-8 mb-3"></i>
-                        <span class="font-semibold text-slate-700">PMS Services</span>
-                    </a>
-                    <a href="#" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
-                        <i data-feather="shield" class="text-green-600 h-8 w-8 mb-3"></i>
-                        <span class="font-semibold text-slate-700">Insurance</span>
-                    </a>
-                    <a href="#" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
-                        <i data-feather="home" class="text-red-600 h-8 w-8 mb-3"></i>
-                        <span class="font-semibold text-slate-700">Home Loans</span>
-                    </a>
-                    <a href="#" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
-                        <i data-feather="credit-card" class="text-purple-600 h-8 w-8 mb-3"></i>
-                        <span class="font-semibold text-slate-700">Credit Cards</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Main Content Grid (Blog + Sidebar) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
-                <!-- Blog Feed (Main Column) -->
-                <div class="lg:col-span-2">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-6">The FinanceFlow Blog</h2>
+    <!-- Main Container -->
+    <div id="variant-classic-focused">
+        <!-- ===== HEADER / NAVIGATION ===== -->
+        <header class="bg-white shadow-sm sticky top-0 z-50">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
                     
-                    <!-- Filters -->
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="text-sm font-medium text-slate-600 self-center mr-2">Filter by:</span>
-                        <button class="px-4 py-1 text-sm font-medium rounded-full bg-blue-600 text-white">All Topics</button>
-                        <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Investing</button>
-                        <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Saving</button>
-                        <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Debt</button>
-                        <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Taxes</button>
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Updated Icon and Name -->
+                        <i data-feather="bar-chart-2" class="text-teal-600 h-7 w-7"></i>
+                        <span class="ml-2 text-2xl font-bold text-slate-900">Investally</span>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex md:items-center md:space-x-6">
+                        <a href="#" class="text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('blog-list-view')">Blog</a>
+                        <a href="#" class="text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('calculators-view')">Calculators</a>
+                        <a href="#" class="text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition">Products</a>
+                        <a href="#" class="text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition">About Us</a>
+                    </div>
+                    
+                    <!-- Subscribe Button -->
+                    <div>
+                        <a href="#subscribe-v-focused" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition">
+                            Subscribe
+                        </a>
                     </div>
 
-                    <!-- Tabs: Latest / Popular -->
-                    <div class="mb-6 border-b border-slate-200">
-                        <nav class="flex -mb-px space-x-6">
-                            <a href="#" class="py-3 px-1 border-b-2 border-blue-600 text-blue-600 font-semibold">Latest Blogs</a>
-                            <a href="#" class="py-3 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium">Popular Blogs</a>
-                        </nav>
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button class="text-slate-500 hover:text-slate-800" id="mobile-menu-button">
+                            <i data-feather="menu"></i>
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Blog Post Card Grid -->
-                    <div class="space-y-8">
-                        <!-- Blog Post Card 1 -->
-                        <article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col md:flex-row">
-                            <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Finance+Image" alt="Blog post image" class="md:w-1/3 h-48 md:h-auto object-cover">
-                            <div class="p-6 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-xs font-semibold uppercase text-blue-600">Investing</span>
-                                    <h3 class="mt-2 text-2xl font-bold text-slate-900 hover:text-blue-700 transition">
-                                        <!-- This link triggers the view change -->
-                                        <a href="#" onclick="event.preventDefault(); showView('blog-post-view')">The 5 Simple Rules of Successful Investing</a>
-                                    </h3>
-                                    <p class="mt-3 text-slate-600">Learn the foundational rules that separate successful investors from the rest. It's simpler than you think...</p>
-                                </div>
-                                <div class="mt-4 flex items-center space-x-3">
-                                    <img src="https://placehold.co/40x40/E2E8F0/334155?text=Author" alt="Author" class="w-10 h-10 rounded-full">
-                                    <div>
-                                        <p class="font-medium text-slate-800">Jane Doe</p>
-                                        <p class="text-sm text-slate-500">Oct 28, 2025 · 6 min read</p>
-                                    </div>
-                                </div>
+                <!-- Mobile Menu (hidden by default) -->
+                <div id="mobile-menu" class="md:hidden hidden pb-4">
+                    <a href="#" class="block text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('blog-list-view')">Blog</a>
+                    <a href="#" class="block text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('calculators-view')">Calculators</a>
+                    <a href="#" class="block text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition">Products</a>
+                    <a href="#" class="block text-slate-600 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition">About Us</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- ===== MAIN CONTENT AREA ===== -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+            <!-- ===== NEW: Market Tickers Section ===== -->
+            <section class="mb-8 md:mb-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Ticker Card 1: NIFTY 50 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-semibold text-slate-800">NIFTY 50</h3>
+                            <!-- Simple SVG line graph -->
+                            <div class="w-24 h-10">
+                                <svg viewBox="0 0 100 40" class="w-full h-full" preserveAspectRatio="none">
+                                    <path d="M 0 30 L 20 25 L 40 28 L 60 20 L 80 15 L 100 10" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"></path>
+                                </svg>
                             </div>
-                        </article>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-2xl font-bold text-slate-900">23,450.80</p>
+                            <p class="flex items-center text-sm font-medium text-green-600">
+                                <i data-feather="arrow-up" class="w-4 h-4 mr-1"></i>
+                                +120.50 (+0.52%)
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Ticker Card 2: Sensex -->
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-semibold text-slate-800">Sensex</h3>
+                            <!-- Simple SVG line graph -->
+                            <div class="w-24 h-10">
+                                <svg viewBox="0 0 100 40" class="w-full h-full" preserveAspectRatio="none">
+                                    <path d="M 0 10 L 20 15 L 40 12 L 60 20 L 80 25 L 100 30" fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-2xl font-bold text-slate-900">77,120.10</p>
+                            <p class="flex items-center text-sm font-medium text-red-600">
+                                <i data-feather="arrow-down" class="w-4 h-4 mr-1"></i>
+                                -210.30 (-0.27%)
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Ticker Card 3: Gold -->
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-semibold text-slate-800">Gold (MCX)</h3>
+                            <!-- Simple SVG line graph -->
+                            <div class="w-24 h-10">
+                                <svg viewBox="0 0 100 40" class="w-full h-full" preserveAspectRatio="none">
+                                    <path d="M 0 25 L 20 28 L 40 20 L 60 22 L 80 15 L 100 18" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-2xl font-bold text-slate-900">₹72,850.00</p>
+                            <p class="flex items-center text-sm font-medium text-green-600">
+                                <i data-feather="arrow-up" class="w-4 h-4 mr-1"></i>
+                                +310.00 (+0.43%)
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Ticker Card 4: Silver -->
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-lg font-semibold text-slate-800">Silver (MCX)</h3>
+                            <!-- Simple SVG line graph -->
+                            <div class="w-24 h-10">
+                                <svg viewBox="0 0 100 40" class="w-full h-full" preserveAspectRatio="none">
+                                    <path d="M 0 15 L 20 12 L 40 20 L 60 18 L 80 25 L 100 22" fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="text-2xl font-bold text-slate-900">₹89,500.00</p>
+                            <p class="flex items-center text-sm font-medium text-red-600">
+                                <i data-feather="arrow-down" class="w-4 h-4 mr-1"></i>
+                                -150.00 (-0.17%)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                        <!-- Blog Post Card 2 -->
-                        <article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col md:flex-row">
-                            <img src="https://placehold.co/600x400/10B981/FFFFFF?text=Saving+Tips" alt="Blog post image" class="md:w-1/3 h-48 md:h-auto object-cover">
-                            <div class="p-6 flex flex-col justify-between">
-                                <div>
-                                    <span class="text-xs font-semibold uppercase text-green-600">Saving</span>
-                                    <h3 class="mt-2 text-2xl font-bold text-slate-900 hover:text-blue-700 transition">
-                                        <a href="#" onclick="event.preventDefault(); showView('blog-post-view')">How to Build an Emergency Fund in 6 Months</a>
-                                    </h3>
-                                    <p class="mt-3 text-slate-600">An emergency fund is your financial seatbelt. Here's a step-by-step plan to build yours, even on a tight budget...</p>
-                                </div>
-                                <div class="mt-4 flex items-center space-x-3">
-                                    <img src="https://placehold.co/40x40/E2E8F0/334155?text=Author" alt="Author" class="w-10 h-10 rounded-full">
+
+            <!-- ===== VIEW 1: BLOG LIST (Default View) ===== -->
+            <div data-view="blog-list-view">
+                
+                <!-- Main Content Grid (Blog + Sidebar) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Blog Feed (Main Column) -->
+                    <div class="lg:col-span-2">
+                        <!-- Updated Blog Title -->
+                        <h2 class="text-3xl font-bold text-slate-900 mb-6">The Investally Blog</h2>
+                        
+                        <!-- Filters -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-sm font-medium text-slate-600 self-center mr-2">Filter by:</span>
+                            <button class="px-4 py-1 text-sm font-medium rounded-full bg-teal-600 text-white">All Topics</button>
+                            <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Investing</button>
+                            <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Saving</button>
+                            <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Debt</button>
+                            <button class="px-4 py-1 text-sm font-medium rounded-full bg-white text-slate-700 border border-slate-300 hover:bg-slate-100 transition">Taxes</button>
+                        </div>
+
+                        <!-- Tabs: Latest / Popular -->
+                        <div class="mb-6 border-b border-slate-200">
+                            <nav class="flex -mb-px space-x-6">
+                                <a href="#" class="py-3 px-1 border-b-2 border-teal-600 text-teal-600 font-semibold">Latest Blogs</a>
+                                <a href="#" class="py-3 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 font-medium">Popular Blogs</a>
+                            </nav>
+                        </div>
+
+                        <!-- Blog Post Card Grid -->
+                        <div class="space-y-8">
+                            <!-- Blog Post Card 1 -->
+                            <article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col md:flex-row">
+                                <img src="https://placehold.co/600x400/14B8A6/FFFFFF?text=Finance+Image" alt="Blog post image" class="md:w-1/3 h-48 md:h-auto object-cover">
+                                <div class="p-6 flex flex-col justify-between">
                                     <div>
-                                        <p class="font-medium text-slate-800">John Smith</p>
-                                        <p class="text-sm text-slate-500">Oct 25, 2025 · 8 min read</p>
+                                        <span class="text-xs font-semibold uppercase text-teal-600">Investing</span>
+                                        <h3 class="mt-2 text-2xl font-bold text-slate-900 hover:text-teal-700 transition">
+                                            <a href="#" onclick="event.preventDefault(); showView('blog-post-view')">The 5 Simple Rules of Successful Investing</a>
+                                        </h3>
+                                        <p class="mt-3 text-slate-600">Learn the foundational rules that separate successful investors from the rest. It's simpler than you think...</p>
+                                    </div>
+                                    <div class="mt-4 flex items-center space-x-3">
+                                        <img src="https://placehold.co/40x40/E2E8F0/334155?text=Author" alt="Author" class="w-10 h-10 rounded-full">
+                                        <div>
+                                            <p class="font-medium text-slate-800">Jane Doe</p>
+                                            <p class="text-sm text-slate-500">Oct 28, 2025 · 6 min read</p>
+                                        </div>
                                     </div>
                                 </div>
                             </article>
+
+                            <!-- Blog Post Card 2 -->
+                            <article class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col md:flex-row">
+                                <img src="https://placehold.co/600x400/10B981/FFFFFF?text=Saving+Tips" alt="Blog post image" class="md:w-1/3 h-48 md:h-auto object-cover">
+                                <div class="p-6 flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-xs font-semibold uppercase text-green-600">Saving</span>
+                                        <h3 class="mt-2 text-2xl font-bold text-slate-900 hover:text-teal-700 transition">
+                                            <a href="#" onclick="event.preventDefault(); showView('blog-post-view')">How to Build an Emergency Fund in 6 Months</a>
+                                        </h3>
+                                        <p class="mt-3 text-slate-600">An emergency fund is your financial seatbelt. Here's a step-by-step plan to build yours...</p>
+                                    </div>
+                                    <div class="mt-4 flex items-center space-x-3">
+                                        <img src="https://placehold.co/40x40/E2E8F0/334155?text=Author" alt="Author" class="w-10 h-10 rounded-full">
+                                        <div>
+                                            <p class="font-medium text-slate-800">John Smith</p>
+                                            <p class="text-sm text-slate-500">Oct 25, 2025 · 8 min read</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar (Aside) -->
+                    <aside class="lg:col-span-1 space-y-8">
                         
-                        <!-- More cards... -->
-                    </div>
+                        <!-- ===== MOVED UP: Mini Calculators ===== -->
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">Quick Calculators</h3>
+                            <div class="space-y-6">
+                                <!-- Calculator 1: Simple Interest -->
+                                <div>
+                                    <label for="principal-v6" class="block text-sm font-medium text-slate-700">Simple Interest</label>
+                                    <input type="number" id="principal-v6" placeholder="Principal (₹)" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <input type="number" id="rate-v6" placeholder="Rate (%)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <input type="number" id="time-v6" placeholder="Time (Years)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-teal-100 text-teal-700 hover:bg-teal-200 transition">Calculate</button>
+                                </div>
+                                <!-- Calculator 2: EMI -->
+                                <div>
+                                    <label for="loan-v6" class="block text-sm font-medium text-slate-700">Loan EMI</label>
+                                    <input type="number" id="loan-v6" placeholder="Loan Amount (₹)" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <input type="number" id="loan-rate-v6" placeholder="Rate (%)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <input type="number" id="loan-term-v6" placeholder="Term (Months)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-teal-100 text-teal-700 hover:bg-teal-200 transition">Calculate</button>
+                                </div>
+                            </div>
+                            <!-- Explore More Link -->
+                            <a href="#" class="inline-flex items-center mt-6 text-teal-600 hover:text-teal-800 font-medium" onclick="event.preventDefault(); showView('calculators-view')">
+                                Explore More Calculators
+                                <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Email Subscription -->
+                        <section id="subscribe-v-focused" class="bg-teal-600 rounded-lg shadow-lg p-6 text-center text-white">
+                            <h1 class="text-xl md:text-2xl font-bold mb-2">Get Smarter About Your Money.</h1>
+                            <p class="text-sm text-teal-100 mb-4">Subscribe for free financial tips and analysis.</p>
+                            <form class="flex flex-col gap-2">
+                                <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-md text-slate-900 focus:ring-2 focus:ring-white" required>
+                                <button type="submit" class="w-full px-4 py-2 rounded-md font-semibold bg-white text-teal-600 hover:bg-teal-50 shadow-md transition">Sign Up</button>
+                            </form>
+                        </section>
 
-                    <!-- Pagination -->
-                    <div class="mt-10 flex justify-center">
-                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
-                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-slate-300 bg-white text-sm font-medium text-slate-500 hover:bg-slate-50">Prev</a>
-                            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-slate-300 bg-white text-sm font-medium text-blue-600">1</a>
-                            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-slate-300 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50">2</a>
-                            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-slate-300 bg-white text-sm font-medium text-slate-700 hover:bg-slate-50">3</a>
-                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-slate-300 bg-white text-sm font-medium text-slate-500 hover:bg-slate-50">Next</a>
-                        </nav>
-                    </div>
+                        <!-- Product Buttons -->
+                        <section>
+                            <h2 class="text-xl font-bold text-slate-900 mb-4 text-left">Our Financial Products</h2>
+                            <div class="grid grid-cols-2 gap-4">
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="briefcase" class="text-teal-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">PMS Services</span>
+                                </a>
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="shield" class="text-green-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">Insurance</span>
+                                </a>
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="home" class="text-red-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">Home Loans</span>
+                                </a>
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="credit-card" class="text-purple-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">Credit Cards</span>
+                                </a>
+                            </div>
+                        </section>
 
+                        <!-- Social Media Links -->
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">Follow Us</h3>
+                            <div class="flex justify-around">
+                                <a href="#" class="text-slate-500 hover:text-teal-600 transition"><i data-feather="twitter" class="w-8 h-8"></i></a>
+                                <a href="#" class="text-slate-500 hover:text-teal-800 transition"><i data-feather="linkedin" class="w-8 h-8"></i></a>
+                                <a href="#" class="text-slate-500 hover:text-pink-600 transition"><i data-feather="instagram" class="w-8 h-8"></i></a>
+                                <a href="#" class="text-slate-500 hover:text-teal-700 transition"><i data-feather="facebook" class="w-8 h-8"></i></a>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
-
-                <!-- Sidebar (Aside) -->
-                <aside class="lg:col-span-1 space-y-8">
-                    <!-- Mini Calculators -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Quick Calculators</h3>
-                        <div class="space-y-6">
-                            <!-- Calculator 1: Simple Interest -->
-                            <div>
-                                <label for="principal" class="block text-sm font-medium text-slate-700">Simple Interest</label>
-                                <input type="number" id="principal" placeholder="Principal ($)" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <input type="number" id="rate" placeholder="Rate (%)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <input type="number" id="time" placeholder="Time (Years)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition">Calculate</button>
-                            </div>
-                            <!-- Calculator 2: EMI -->
-                            <div>
-                                <label for="loan" class="block text-sm font-medium text-slate-700">Loan EMI</label>
-                                <input type="number" id="loan" placeholder="Loan Amount ($)" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <input type="number" id="loan-rate" placeholder="Rate (%)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <input type="number" id="loan-term" placeholder="Term (Months)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition">Calculate</button>
-                            </div>
-                        </div>
-                        <!-- Explore More Link -->
-                        <a href="#" class="inline-flex items-center mt-6 text-blue-600 hover:text-blue-800 font-medium" onclick="event.preventDefault(); showView('calculators-view')">
-                            Explore More Calculators
-                            <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Social Media Links -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Follow Us</h3>
-                        <div class="flex justify-around">
-                            <a href="#" class="text-slate-500 hover:text-blue-600 transition"><i data-feather="twitter" class="w-8 h-8"></i></a>
-                            <a href="#" class="text-slate-500 hover:text-blue-800 transition"><i data-feather="linkedin" class="w-8 h-8"></i></a>
-                            <a href="#" class="text-slate-500 hover:text-pink-600 transition"><i data-feather="instagram" class="w-8 h-8"></i></a>
-                            <a href="#" class="text-slate-500 hover:text-blue-700 transition"><i data-feather="facebook" class="w-8 h-8"></i></a>
-                        </div>
-                    </div>
-                </aside>
-
             </div>
-        </div>
 
 
-        <!-- ===== VIEW 2: BLOG POST (Hidden by default) ===== -->
-        <div id="blog-post-view" class="hidden">
-            <!-- Main Content Grid (Article + Sidebar) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
-                <!-- Blog Article (Main Column) -->
-                <article class="lg:col-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
-                    <div class="p-6 md:p-10">
-                        <!-- Back Link -->
-                        <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4" onclick="event.preventDefault(); showView('blog-list-view')">
-                            <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i>
-                            Back to all posts
-                        </a>
-
-                        <!-- Category & Title -->
-                        <span class="block text-sm font-semibold uppercase text-blue-600 mb-2">Investing</span>
-                        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The 5 Simple Rules of Successful Investing</h1>
-                        
-                        <!-- Author Meta -->
-                        <div class="flex items-center space-x-3 mb-6">
-                            <img src="https://placehold.co/40x40/E2E8F0/334155?text=Author" alt="Author" class="w-10 h-10 rounded-full">
-                            <div>
-                                <p class="font-medium text-slate-800">Jane Doe</p>
-                                <p class="text-sm text-slate-500">Oct 28, 2025 · 6 min read</p>
+            <!-- ===== VIEW 2: BLOG POST (Hidden by default) ===== -->
+            <div data-view="blog-post-view" class="hidden">
+                <!-- Main Content Grid (Article + Sidebar) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Blog Article (Main Column) -->
+                    <article class="lg:col-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+                        <div class="p-6 md:p-10">
+                            <!-- Back Link -->
+                            <a href="#" class="inline-flex items-center text-teal-600 hover:text-teal-800 font-medium mb-4" onclick="event.preventDefault(); showView('blog-list-view')">
+                                <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i>
+                                Back to all posts
+                            </a>
+                            <span class="block text-sm font-semibold uppercase text-teal-600 mb-2">Investing</span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The 5 Simple Rules of Successful Investing</h1>
+                            <!-- Author Info -->
+                            <div class="flex items-center space-x-3">
+                                <img src="https://placehold.co/40x40/E2E8F0/334155?text=Author" alt="Author" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <p class="font-medium text-slate-800">Jane Doe</p>
+                                    <p class="text-sm text-slate-500">Oct 28, 2025 · 6 min read</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Main Image -->
-                    <img src="https://placehold.co/1200x600/3B82F6/FFFFFF?text=Successful+Investing" alt="Blog post image" class="w-full h-auto object-cover">
-                    
-                    <!-- Article Content -->
-                    <div class="prose prose-lg max-w-none p-6 md:p-10 text-slate-700">
-                        <p>This is where the main content of the blog post will go. We're demonstrating various formatting options that would be available in your CMS.</p>
-                        
-                        <p>Learn the foundational rules that separate successful investors from the rest. It's simpler than you think, but it requires discipline and a long-term mindset. Let's dive in.</p>
-                        
-                        <h2>Rule 1: Start Early and Be Consistent</h2>
-                        <p>The most powerful force in investing is <strong>compound interest</strong>. The earlier you start, the more time your money has to grow. Even small, consistent contributions can grow into a substantial sum over time.</p>
-                        
-                        <blockquote>
-                            "Compound interest is the eighth wonder of the world. He who understands it, earns it; he who doesn't, pays it." - Albert Einstein (allegedly)
-                        </blockquote>
-                        
-                        <h2>Rule 2: Understand Your Risk Tolerance</h2>
-                        <p>Not all investments are created equal. Some, like stocks, offer higher potential returns but come with higher risk. Others, like bonds, are safer but offer lower returns.</p>
-                        <ul>
-                            <li><strong>Aggressive:</strong> Comfortable with large swings for high growth.</li>
-                            <li><strong>Moderate:</strong> A balanced approach of stocks and bonds.</li>
-                            <li><strong>Conservative:</strong> Prioritizes capital preservation.</li>
-                        </ul>
-                        
-                        <h2>Rule 3: Diversify, Diversify, Diversify</h2>
-                        <p>Don't put all your eggs in one basket. Diversification means spreading your investments across different asset classes (stocks, bonds, real estate) and sectors (tech,
-                        healthcare, energy).</p>
-
-                        <!-- Placeholder Image in post -->
-                        <figure>
-                            <img src="https://placehold.co/800x400/E2E8F0/334155?text=Diversification+Chart" alt="Diversification chart" class="rounded-md">
-                            <figcaption class="text-center text-sm text-slate-500 mt-2">A diversified portfolio reduces risk.</figcaption>
-                        </figure>
-
-                        <p>... and so on. The article would continue with Rules 4 and 5, and a concluding summary.</p>
-
-                    </div>
-
-                    <!-- CTA at end of post -->
-                    <div class="p-6 md:p-10 bg-slate-50 border-t border-slate-200">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Ready to Start Your Financial Journey?</h3>
-                        <p class="text-slate-600 mb-6">Reading is the first step. The next is taking action. Let our experts help you build a personalized financial plan.</p>
-                        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
-                            Book a Free Consultation
-                        </a>
-                    </div>
-
-                    <!-- Comment Section -->
-                    <div class="p-6 md:p-10 border-t border-slate-200">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-6">Leave a Comment</h3>
-                        
-                        <!-- Comment Form -->
-                        <form class="space-y-4 mb-8">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <img src="https://placehold.co/1200x600/14B8A6/FFFFFF?text=Successful+Investing" alt="Blog post image" class="w-full h-auto object-cover">
+                        <div class="prose prose-lg max-w-none p-6 md:p-10">
+                            <!-- Sample Article Content -->
+                            <p>Investing can seem complex, but at its core, it relies on a few simple, powerful principles. Mastering these rules can be the difference between achieving your financial goals and falling short.</p>
+                            <h3>Rule 1: Start Early and Be Consistent</h3>
+                            <p>The most powerful force in investing is compound interest. The earlier you start, the more time your money has to grow. Even small, consistent contributions can grow into a substantial sum over time. Don't wait for the "perfect" time; the best time to start was yesterday. The second best time is today.</p>
+                            <h3>Rule 2: Understand and Manage Risk</h3>
+                            <p>All investing involves risk, but not all risks are equal. Diversification—spreading your investments across different asset classes (stocks, bonds, real estate) and sectors—is the most effective way to manage risk. It ensures that a poor performance in one area doesn't wipe out your entire portfolio.</p>
+                            <ul>
+                                <li><strong>Don't put all your eggs in one basket.</strong></li>
+                                <li><strong>Assess your own risk tolerance.</strong> Are you comfortable with volatility, or do you prefer a smoother ride?</li>
+                                <li><strong>Rebalance your portfolio</strong> periodically to stay aligned with your goals.</li>
+                            </ul>
+                            <h3>Rule 3: Keep Costs Low</h3>
+                            <p>Fees and expenses are silent portfolio killers. A 1% fee might not sound like much, but over 30 years, it can consume a significant portion of your returns. Opt for low-cost index funds or ETFs over actively managed funds with high expense ratios.</p>
+                            <blockquote>"The grim irony of investing is that we investors as a group not only don't get what we pay for, we get precisely what we don't pay for." - John C. Bogle</blockquote>
+                            <h3>Rule 4: Invest for the Long Term</h3>
+                            <p>The stock market is volatile in the short term but has historically trended upwards over the long term. Avoid the temptation to time the market—getting in and out based on news or fear. "Time in the market" is far more important than "timing the market."</p>
+                            <h3>Rule 5: Control Your Emotions</h3>
+                            <p>The biggest obstacle to successful investing is often our own psychology. Fear and greed drive poor decisions. When markets are crashing (fear), people sell low. When markets are soaring (greed), people buy high. Create a solid financial plan and stick to it. Automate your investments and avoid checking your portfolio every day.</p>
+                        </div>
+                        <div class="p-6 md:p-10 bg-slate-50 border-t border-slate-200">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3">Ready to Start Your Financial Journey?</h3>
+                            <p class="text-slate-600 mb-6">Reading is the first step. The next is taking action. Let our experts at Investally help you build a personalized financial plan.</p>
+                            <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition">
+                                Book a Free Consultation
+                            </a>
+                        </div>
+                        <div class="p-6 md:p-10 border-t border-slate-200">
+                            <h3 class="text-2xl font-bold text-slate-900 mb-6">Leave a Comment</h3>
+                            <!-- Comments Form -->
+                            <form class="space-y-4">
                                 <div>
-                                    <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
-                                    <input type="text" id="name" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    <label for="comment" class="sr-only">Comment</label>
+                                    <textarea id="comment" rows="4" class="w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500" placeholder="Write your comment..."></textarea>
                                 </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-slate-700">Email (will not be published)</label>
-                                    <input type="email" id="email" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <div class="flex gap-4">
+                                    <input type="text" placeholder="Your Name" class="flex-1 rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <input type="email" placeholder="Your Email" class="flex-1 rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                                 </div>
-                            </div>
-                            <div>
-                                <label for="comment" class="block text-sm font-medium text-slate-700">Comment</label>
-                                <textarea id="comment" rows="4" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="inline-flex items-center px-5 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition">
+                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition">
                                     Post Comment
                                 </button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                    </article>
 
-                        <!-- Existing Comments -->
-                        <div class="space-y-6">
-                            <h4 class="text-xl font-bold text-slate-900">2 Comments</h4>
-                            <!-- Comment 1 -->
-                            <div class="flex space-x-3">
-                                <img src="https://placehold.co/40x40/E2E8F0/334155?text=User" alt="User avatar" class="w-10 h-10 rounded-full">
-                                <div class="flex-1">
-                                    <p class="font-medium text-slate-800">John Smith</p>
-                                    <p class="text-sm text-slate-500 mb-2">Oct 29, 2025</p>
-                                    <p class="text-slate-600">Great article! Rule 3 is something I've always struggled with. This makes it much clearer.</p>
+                    <!-- Persistent Sidebar -->
+                    <aside class="lg:col-span-1 space-y-8">
+                        
+                        <!-- ===== MOVED UP: Mini Calculators ===== -->
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">Quick Calculators</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="principal-v6-2" class="block text-sm font-medium text-slate-700">Simple Interest</label>
+                                    <input type="number" id="principal-v6-2" placeholder="Principal (₹)" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <input type="number" id="rate-v6-2" placeholder="Rate (%)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <input type="number" id="time-v6-2" placeholder="Time (Years)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                                    <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-teal-100 text-teal-700 hover:bg-teal-200 transition">Calculate</button>
                                 </div>
                             </div>
-                            <!-- Comment 2 -->
-                            <div class="flex space-x-3">
-                                <img src="https://placehold.co/40x40/E2E8F0/334155?text=User" alt="User avatar" class="w-10 h-10 rounded-full">
-                                <div class="flex-1">
-                                    <p class="font-medium text-slate-800">Maria Garcia</p>
-                                    <p class="text-sm text-slate-500 mb-2">Oct 29, 2025</p>
-                                    <p class="text-slate-600">Thanks for the breakdown on compound interest. It's a great motivator to start now!</p>
-                                </div>
+                            <!-- Explore More Link -->
+                            <a href="#" class="inline-flex items-center mt-6 text-teal-600 hover:text-teal-800 font-medium" onclick="event.preventDefault(); showView('calculators-view')">
+                                Explore More Calculators
+                                <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Email Subscription -->
+                        <section class="bg-teal-600 rounded-lg shadow-lg p-6 text-center text-white">
+                            <h1 class="text-xl md:text-2xl font-bold mb-2">Get Smarter About Your Money.</h1>
+                            <p class="text-sm text-teal-100 mb-4">Subscribe for free financial tips and analysis.</p>
+                            <form class="flex flex-col gap-2">
+                                <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-md text-slate-900 focus:ring-2 focus:ring-white" required>
+                                <button type="submit" class="w-full px-4 py-2 rounded-md font-semibold bg-white text-teal-600 hover:bg-teal-50 shadow-md transition">Sign Up</button>
+                            </form>
+                        </section>
+
+                        <!-- Product Buttons -->
+                        <section>
+                            <h2 class="text-xl font-bold text-slate-900 mb-4 text-left">Our Financial Products</h2>
+                            <div class="grid grid-cols-2 gap-4">
+                                <!-- ... (product links) ... -->
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="briefcase" class="text-teal-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">PMS Services</span>
+                                </a>
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="shield" class="text-green-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">Insurance</span>
+                                </a>
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="home" class="text-red-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">Home Loans</span>
+                                </a>
+                                <a href="#" class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                                    <i data-feather="credit-card" class="text-purple-600 h-6 w-6 mb-2"></i>
+                                    <span class="font-medium text-sm text-slate-700">Credit Cards</span>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-
-                </article>
-
-                <!-- Persistent Sidebar (Same as on blog list page) -->
-                <aside class="lg:col-span-1 space-y-8">
-                    <!-- Mini Calculators -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Quick Calculators</h3>
-                        <div class="space-y-6">
-                            <!-- Calculator 1: Simple Interest -->
-                            <div>
-                                <label for="principal-2" class="block text-sm font-medium text-slate-700">Simple Interest</label>
-                                <input type="number" id="principal-2" placeholder="Principal ($)" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <input type="number" id="rate-2" placeholder="Rate (%)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <input type="number" id="time-2" placeholder="Time (Years)" class="mt-2 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition">Calculate</button>
-                            </div>
-                        </div>
-                        <!-- Explore More Link -->
-                        <a href="#" class="inline-flex items-center mt-6 text-blue-600 hover:text-blue-800 font-medium" onclick="event.preventDefault(); showView('calculators-view')">
-                            Explore More Calculators
-                            <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
-                        </a>
-                    </div>
-
-                    <!-- Social Media Links -->
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Follow Us</h3>
-                        <div class="flex justify-around">
-                            <a href="#" class="text-slate-500 hover:text-blue-600 transition"><i data-feather="twitter" class="w-8 h-8"></i></a>
-                            <a href="#" class="text-slate-500 hover:text-blue-800 transition"><i data-feather="linkedin" class="w-8 h-8"></i></a>
-                            <a href="#" class="text-slate-500 hover:text-pink-600 transition"><i data-feather="instagram" class="w-8 h-8"></i></a>
-                            <a href="#" class="text-slate-500 hover:text-blue-700 transition"><i data-feather="facebook" class="w-8 h-8"></i></a>
-                        </div>
-                    </div>
-                </aside>
+                        </section>
+                    </aside>
+                </div>
             </div>
-        </div>
 
-        <!-- ===== VIEW 3: CALCULATORS PAGE (Hidden by default) ===== -->
-        <div id="calculators-view" class="hidden">
-            <!-- Back Link -->
-            <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4" onclick="event.preventDefault(); showView('blog-list-view')">
-                <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i>
-                Back to blog
-            </a>
-            
-            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8">Financial Calculators</h1>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- ===== VIEW 3: CALCULATORS PAGE (Hidden by default) ===== -->
+            <div data-view="calculators-view" class="hidden">
+                <!-- Back Link -->
+                <a href="#" class="inline-flex items-center text-teal-600 hover:text-teal-800 font-medium mb-4" onclick="event.preventDefault(); showView('blog-list-view')">
+                    <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i>
+                    Back to blog
+                </a>
                 
-                <!-- SIP Calculator -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">SIP Calculator</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="sip-amount" class="block text-sm font-medium text-slate-700">Monthly Investment ($)</label>
-                            <input type="number" id="sip-amount" placeholder="e.g., 500" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="sip-rate" class="block text-sm font-medium text-slate-700">Expected Return Rate (%)</label>
-                            <input type="number" id="sip-rate" placeholder="e.g., 12" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="sip-years" class="block text-sm font-medium text-slate-700">Time Period (Years)</label>
-                            <input type="number" id="sip-years" placeholder="e.g., 10" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <button class="w-full px-4 py-2 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Calculate</button>
-                        <div class="mt-4 p-4 bg-blue-50 rounded-md text-center">
-                            <p class="text-sm text-slate-600">Future Value:</p>
-                            <p class="text-2xl font-bold text-blue-700">$0.00</p>
-                        </div>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8">Financial Calculators</h1>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- SIP Calculator -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">SIP Calculator</h3>
+                        <p class="text-slate-600 mb-4">Calculate the future value of your SIP investments.</p>
+                        <!-- ... (calculator form) ... -->
                     </div>
-                </div>
-
-                <!-- Goal Based Calculator -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Goal-Based Calculator</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="goal-target" class="block text-sm font-medium text-slate-700">Target Amount ($)</label>
-                            <input type="number" id="goal-target" placeholder="e.g., 100000" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="goal-current" class="block text-sm font-medium text-slate-700">Current Investment ($)</label>
-                            <input type="number" id="goal-current" placeholder="e.g., 10000" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="goal-rate" class="block text-sm font-medium text-slate-700">Expected Return Rate (%)</label>
-                            <input type="number" id="goal-rate" placeholder="e.g., 10" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="goal-years" class="block text-sm font-medium text-slate-700">Time to Goal (Years)</label>
-                            <input type="number" id="goal-years" placeholder="e.g., 5" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <button class="w-full px-4 py-2 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Calculate Monthly SIP</button>
-                        <div class="mt-4 p-4 bg-blue-50 rounded-md text-center">
-                            <p class="text-sm text-slate-600">Required Monthly SIP:</p>
-                            <p class="text-2xl font-bold text-blue-700">$0.00</p>
-                        </div>
+                    <!-- Loan EMI Calculator -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Loan EMI Calculator</h3>
+                        <p class="text-slate-600 mb-4">Find out your Equated Monthly Installment (EMI).</p>
                     </div>
-                </div>
-
-                <!-- Cost of Delay Calculator -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Cost of Delay (SIP)</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="delay-amount" class="block text-sm font-medium text-slate-700">Monthly Investment ($)</label>
-                            <input type="number" id="delay-amount" placeholder="e.g., 500" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="delay-rate" class="block text-sm font-medium text-slate-700">Expected Return Rate (%)</label>
-                            <input type="number" id="delay-rate" placeholder="e.g., 12" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="delay-years" class="block text-sm font-medium text-slate-700">Investment Period (Years)</label>
-                            <input type="number" id="delay-years" placeholder="e.g., 20" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="delay-months" class="block text-sm font-medium text-slate-700">Delay (Months)</label>
-                            <input type="number" id="delay-months" placeholder="e.g., 6" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        </div>
-                        <button class="w-full px-4 py-2 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Calculate Cost</button>
-                        <div class="mt-4 p-4 bg-red-50 rounded-md text-center">
-                            <p class="text-sm text-slate-600">You could lose:</p>
-                            <p class="text-2xl font-bold text-red-700">$0.00</p>
-                        </div>
+                    <!-- Retirement Calculator -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Retirement Calculator</h3>
+                        <p class="text-slate-600 mb-4">Plan your corpus for a comfortable retirement.</p>
                     </div>
-                </div>
-
-            </div>
-        </div>
-
-
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="bg-slate-800 text-slate-300 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <!-- Brand -->
-                <div>
-                    <h4 class="text-lg font-semibold text-white mb-3">FinanceFlow</h4>
-                    <p class="text-sm">Smarter financial decisions.</p>
-                    <div class="flex space-x-4 mt-4">
-                        <a href="#" class="hover:text-white"><i data-feather="twitter"></i></a>
-                        <a href="#" class="hover:text-white"><i data-feather="linkedin"></i></a>
-                        <a href="#" class="hover:text-white"><i data-feather="facebook"></i></a>
+                    <!-- Simple Interest -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Simple Interest</h3>
+                        <p class="text-slate-600 mb-4">Calculate simple interest on your savings or loans.</p>
                     </div>
-                </div>
-                <!-- Navigation -->
-                <div>
-                    <h5 class="font-semibold text-slate-100 uppercase tracking-wide mb-3">Company</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white">About Us</a></li>
-                        <li><a href="#" class="hover:text-white">Careers</a></li>
-                        <li><a href="#" class="hover:text-white">Press</a></li>
-                    </ul>
-                </div>
-                <!-- Resources -->
-                <div>
-                    <h5 class="font-semibold text-slate-100 uppercase tracking-wide mb-3">Resources</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white">Blog</a></li>
-                        <li><a href="#" class="hover:text-white">Calculators</a></li>
-                        <li><a href="#" class="hover:text-white">Glossary</a></li>
-                    </ul>
-                </div>
-                <!-- Legal -->
-                <div>
-                    <h5 class="font-semibold text-slate-100 uppercase tracking-wide mb-3">Legal</h5>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-white">Disclaimer</a></li>
-                    </ul>
+                    <!-- Compound Interest -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Compound Interest</h3>
+                        <p class="text-slate-600 mb-4">See the power of compounding on your investments.</p>
+                    </div>
                 </div>
             </div>
-            <div class="mt-8 border-t border-slate-700 pt-8 text-center text-sm">
-                <p>&copy; 2025 FinanceFlow. All rights reserved. This is a wireframe for illustrative purposes.</p>
+        </main>
+
+        <!-- ===== NEW: FOOTER ===== -->
+        <footer class="bg-slate-800 text-slate-300 mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    
+                    <!-- Col 1: Brand & Contact -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center">
+                            <i data-feather="bar-chart-2" class="text-teal-500 h-7 w-7"></i>
+                            <span class="ml-2 text-2xl font-bold text-white">Investally</span>
+                        </div>
+                        <p class="mt-4 text-sm text-slate-400 max-w-md">Financial planning and insights to help you grow your wealth. We provide tools, articles, and expert advice.</p>
+                        <div class="mt-6 space-y-3">
+                            <a href="mailto:Support@investally.co.in" class="flex items-center text-slate-300 hover:text-white transition">
+                                <i data-feather="mail" class="w-5 h-5 mr-3"></i>
+                                <span>Support@investally.co.in</span>
+                            </a>
+                            <a href="tel:+919166779632" class="flex items-center text-slate-300 hover:text-white transition">
+                                <i data-feather="phone" class="w-5 h-5 mr-3"></i>
+                                <span>+91 91667 79632</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Col 2: Quick Links -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase text-slate-400 tracking-wider">Quick Links</h3>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="#" class="hover:text-white transition" onclick="event.preventDefault(); showView('blog-list-view')">Blog</a></li>
+                            <li><a href="#" class="hover:text-white transition" onclick="event.preventDefault(); showView('calculators-view')">Calculators</a></li>
+                            <li><a href="#" class="hover:text-white transition">Products</a></li>
+                            <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Col 3: Legal -->
+                    <div>
+                        <h3 class="text-sm font-semibold uppercase text-slate-400 tracking-wider">Legal</h3>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="hover:text-white transition">Disclaimer</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="mt-12 pt-8 border-t border-slate-700 flex flex-col sm:flex-row justify-between items-center">
+                    <p class="text-sm text-slate-400">&copy; 2025 Investally. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <a href="#" class="text-slate-400 hover:text-white transition"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition"><i data-feather="linkedin"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition"><i data-feather="facebook"></i></a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
-
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- JavaScript for View Switching and Feather Icons -->
     <script>
         // Initialize Feather Icons
         feather.replace();
 
-        // Simple View-Switching Logic
-        const blogListView = document.getElementById('blog-list-view');
-        const blogPostView = document.getElementById('blog-post-view');
-        const calculatorsView = document.getElementById('calculators-view'); // Get the new view
-
-        function showView(viewId) {
+        // View switching function
+        function showView(viewName) {
             // Hide all views
-            blogListView.classList.add('hidden');
-            blogPostView.classList.add('hidden');
-            calculatorsView.classList.add('hidden'); // Hide the new view
-
-            // Show the target view
-            const targetView = document.getElementById(viewId);
-            if (targetView) {
-                targetView.classList.remove('hidden');
+            document.querySelectorAll('[data-view]').forEach(view => {
+                view.classList.add('hidden');
+            });
+            
+            // Show the selected view
+            const activeView = document.querySelector(`[data-view="${viewName}"]`);
+            if (activeView) {
+                activeView.classList.remove('hidden');
+                // Scroll to top for new view
+                window.scrollTo(0, 0);
             }
-
-            // Scroll to top
-            window.scrollTo(0, 0);
-
-            // Re-initialize feather icons just in case
-            feather.replace();
         }
 
-        // Initially, the 'blog-list-view' is shown by default (no 'hidden' class)
-        // The other views have the 'hidden' class
-    </script>
+        // Show the default view on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showView('blog-list-view');
 
+            // Mobile menu toggle
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuButton) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
