@@ -48,8 +48,8 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex md:items-center md:space-x-6">
-                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition" onclick="showView('blog-list-view')">Blog</a>
-                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition">Calculators</a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('blog-list-view')">Blog</a>
+                    <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition" onclick="event.preventDefault(); showView('calculators-view')">Calculators</a>
                     <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition">Products</a>
                     <a href="#" class="text-slate-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition">About Us</a>
                 </div>
@@ -218,6 +218,11 @@
                                 <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition">Calculate</button>
                             </div>
                         </div>
+                        <!-- Explore More Link -->
+                        <a href="#" class="inline-flex items-center mt-6 text-blue-600 hover:text-blue-800 font-medium" onclick="event.preventDefault(); showView('calculators-view')">
+                            Explore More Calculators
+                            <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
+                        </a>
                     </div>
 
                     <!-- Social Media Links -->
@@ -379,6 +384,11 @@
                                 <button class="mt-3 w-full px-4 py-2 rounded-md font-medium bg-blue-100 text-blue-700 hover:bg-blue-200 transition">Calculate</button>
                             </div>
                         </div>
+                        <!-- Explore More Link -->
+                        <a href="#" class="inline-flex items-center mt-6 text-blue-600 hover:text-blue-800 font-medium" onclick="event.preventDefault(); showView('calculators-view')">
+                            Explore More Calculators
+                            <i data-feather="arrow-right" class="ml-2 h-4 w-4"></i>
+                        </a>
                     </div>
 
                     <!-- Social Media Links -->
@@ -394,6 +404,102 @@
                 </aside>
             </div>
         </div>
+
+        <!-- ===== VIEW 3: CALCULATORS PAGE (Hidden by default) ===== -->
+        <div id="calculators-view" class="hidden">
+            <!-- Back Link -->
+            <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium mb-4" onclick="event.preventDefault(); showView('blog-list-view')">
+                <i data-feather="arrow-left" class="mr-2 h-4 w-4"></i>
+                Back to blog
+            </a>
+            
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8">Financial Calculators</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- SIP Calculator -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">SIP Calculator</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="sip-amount" class="block text-sm font-medium text-slate-700">Monthly Investment ($)</label>
+                            <input type="number" id="sip-amount" placeholder="e.g., 500" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="sip-rate" class="block text-sm font-medium text-slate-700">Expected Return Rate (%)</label>
+                            <input type="number" id="sip-rate" placeholder="e.g., 12" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="sip-years" class="block text-sm font-medium text-slate-700">Time Period (Years)</label>
+                            <input type="number" id="sip-years" placeholder="e.g., 10" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <button class="w-full px-4 py-2 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Calculate</button>
+                        <div class="mt-4 p-4 bg-blue-50 rounded-md text-center">
+                            <p class="text-sm text-slate-600">Future Value:</p>
+                            <p class="text-2xl font-bold text-blue-700">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goal Based Calculator -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Goal-Based Calculator</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="goal-target" class="block text-sm font-medium text-slate-700">Target Amount ($)</label>
+                            <input type="number" id="goal-target" placeholder="e.g., 100000" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="goal-current" class="block text-sm font-medium text-slate-700">Current Investment ($)</label>
+                            <input type="number" id="goal-current" placeholder="e.g., 10000" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="goal-rate" class="block text-sm font-medium text-slate-700">Expected Return Rate (%)</label>
+                            <input type="number" id="goal-rate" placeholder="e.g., 10" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="goal-years" class="block text-sm font-medium text-slate-700">Time to Goal (Years)</label>
+                            <input type="number" id="goal-years" placeholder="e.g., 5" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <button class="w-full px-4 py-2 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Calculate Monthly SIP</button>
+                        <div class="mt-4 p-4 bg-blue-50 rounded-md text-center">
+                            <p class="text-sm text-slate-600">Required Monthly SIP:</p>
+                            <p class="text-2xl font-bold text-blue-700">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cost of Delay Calculator -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Cost of Delay (SIP)</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="delay-amount" class="block text-sm font-medium text-slate-700">Monthly Investment ($)</label>
+                            <input type="number" id="delay-amount" placeholder="e.g., 500" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="delay-rate" class="block text-sm font-medium text-slate-700">Expected Return Rate (%)</label>
+                            <input type="number" id="delay-rate" placeholder="e.g., 12" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="delay-years" class="block text-sm font-medium text-slate-700">Investment Period (Years)</label>
+                            <input type="number" id="delay-years" placeholder="e.g., 20" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="delay-months" class="block text-sm font-medium text-slate-700">Delay (Months)</label>
+                            <input type="number" id="delay-months" placeholder="e.g., 6" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <button class="w-full px-4 py-2 rounded-md font-medium bg-blue-600 text-white hover:bg-blue-700 transition">Calculate Cost</button>
+                        <div class="mt-4 p-4 bg-red-50 rounded-md text-center">
+                            <p class="text-sm text-slate-600">You could lose:</p>
+                            <p class="text-2xl font-bold text-red-700">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
 
     </main>
 
@@ -454,11 +560,13 @@
         // Simple View-Switching Logic
         const blogListView = document.getElementById('blog-list-view');
         const blogPostView = document.getElementById('blog-post-view');
+        const calculatorsView = document.getElementById('calculators-view'); // Get the new view
 
         function showView(viewId) {
             // Hide all views
             blogListView.classList.add('hidden');
             blogPostView.classList.add('hidden');
+            calculatorsView.classList.add('hidden'); // Hide the new view
 
             // Show the target view
             const targetView = document.getElementById(viewId);
@@ -468,11 +576,15 @@
 
             // Scroll to top
             window.scrollTo(0, 0);
+
+            // Re-initialize feather icons just in case
+            feather.replace();
         }
 
         // Initially, the 'blog-list-view' is shown by default (no 'hidden' class)
-        // The 'blog-post-view' has the 'hidden' class
+        // The other views have the 'hidden' class
     </script>
 
 </body>
 </html>
+
