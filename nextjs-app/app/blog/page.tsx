@@ -1,46 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, Briefcase, Shield, Home, TrendingUp, Calculator } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import { getAllPosts, getAllCategories } from "@/lib/sanity.api";
+import { urlForImage } from "@/lib/sanity.image";
 
-export default function BlogListingPage() {
-  const categories = ["All Articles", "Investing", "Insurance", "Loans", "Tax Planning", "Retirement"];
+export default async function BlogListingPage() {
+  // Fetch posts and categories from Sanity
+  const blogPosts = await getAllPosts();
+  const sanityCategories = await getAllCategories();
 
-  const blogPosts = [
-    {
-      id: "portfolio-management-guide",
-      image: "PMS+Guide",
-      category: "Investing",
-      categoryColor: "text-teal-600",
-      date: "Feb 1, 2025",
-      title: "Complete Guide to Portfolio Management Services in India",
-      excerpt: "Discover how PMS can help you build wealth through professionally managed, personalized investment strategies...",
-      author: "Rajesh Kumar",
-      authorInitials: "RK"
-    },
-    {
-      id: "investing-rules",
-      image: "Investing+Tips",
-      category: "Investing",
-      categoryColor: "text-teal-600",
-      date: "Jan 28, 2025",
-      title: "5 Simple Rules of Successful Investing for Beginners",
-      excerpt: "Learn the foundational principles that can help you start your investment journey with confidence...",
-      author: "Priya Sharma",
-      authorInitials: "PS"
-    },
-    {
-      id: "insurance-guide",
-      image: "Insurance+Guide",
-      category: "Insurance",
-      categoryColor: "text-green-600",
-      date: "Jan 25, 2025",
-      title: "How Much Life Insurance Do You Really Need?",
-      excerpt: "Calculate your insurance needs based on your family's requirements and financial goals...",
-      author: "Arun Mehta",
-      authorInitials: "AM"
-    }
-  ];
+  // Add "All Articles" to the beginning of categories
+  const categories = ["All Articles", ...sanityCategories.map(cat => cat.title)];
 
   return (
     <>
@@ -85,37 +57,79 @@ export default function BlogListingPage() {
             {/* Blog Grid (Left - 2 columns) */}
             <div className="lg:col-span-2">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                {blogPosts.map((post) => (
-                  <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-                    <div className="w-full h-48 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold">
-                      {post.image.replace(/\+/g, ' ')}
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <span className={`text-xs font-semibold uppercase tracking-wider ${post.categoryColor}`}>
-                          {post.category}
-                        </span>
-                        <span className="text-xs text-slate-500">{post.date}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-3 hover:text-teal-600 transition">
-                        <Link href={`/blog/${post.id}`}>{post.title}</Link>
-                      </h3>
-                      <p className="text-slate-600 mb-4">{post.excerpt}</p>
-                      <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-2 text-xs">
-                            {post.authorInitials}
+                {blogPosts.length === 0 ? (
+                  <div className="col-span-2 text-center py-12">
+                    <p className="text-slate-600 text-lg mb-4">No blog posts found.</p>
+                    <p className="text-slate-500">Create your first blog post in Sanity Studio!</p>
+                  </div>
+                ) : (
+                  blogPosts.map((post) => {
+                    const imageUrl = post.mainImage?.asset ? urlForImage(post.mainImage).width(600).height(400).url() : null;
+                    const authorInitials = post.author?.name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'UN';
+                    const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric'
+                    });
+
+                    return (
+                      <article key={post._id} className="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                        {imageUrl ? (
+                          <div className="relative w-full h-48 overflow-hidden">
+                            <Image
+                              src={imageUrl}
+                              alt={post.mainImage?.alt || post.title}
+                              fill
+                              className="object-cover"
+                            />
                           </div>
-                          <span className="text-sm text-slate-600">{post.author}</span>
+                        ) : (
+                          <div className="w-full h-48 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold text-lg">
+                            {post.title.substring(0, 30)}...
+                          </div>
+                        )}
+                        <div className="p-6">
+                          <div className="flex items-center justify-between mb-3">
+                            <span
+                              className="text-xs font-semibold uppercase tracking-wider"
+                              style={{ color: post.category?.color || '#0d9488' }}
+                            >
+                              {post.category?.title || 'Uncategorized'}
+                            </span>
+                            <span className="text-xs text-slate-500">{formattedDate}</span>
+                          </div>
+                          <h3 className="text-xl font-bold text-slate-900 mb-3 hover:text-teal-600 transition">
+                            <Link href={`/blog/${post.slug.current}`}>{post.title}</Link>
+                          </h3>
+                          <p className="text-slate-600 mb-4">{post.excerpt}</p>
+                          <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <div className="flex items-center">
+                              {post.author?.image?.asset ? (
+                                <div className="relative w-8 h-8 rounded-full overflow-hidden mr-2">
+                                  <Image
+                                    src={urlForImage(post.author.image).width(32).height(32).url()}
+                                    alt={post.author.name}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                </div>
+                              ) : (
+                                <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-2 text-xs">
+                                  {authorInitials}
+                                </div>
+                              )}
+                              <span className="text-sm text-slate-600">{post.author?.name || 'Anonymous'}</span>
+                            </div>
+                            <Link href={`/blog/${post.slug.current}`} className="text-teal-600 hover:text-teal-700 font-semibold text-sm flex items-center">
+                              Read More
+                              <ArrowRight className="ml-1 h-4 w-4" />
+                            </Link>
+                          </div>
                         </div>
-                        <Link href={`/blog/${post.id}`} className="text-teal-600 hover:text-teal-700 font-semibold text-sm flex items-center">
-                          Read More
-                          <ArrowRight className="ml-1 h-4 w-4" />
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                ))}
+                      </article>
+                    );
+                  })
+                )}
               </div>
 
               {/* Pagination */}

@@ -1,10 +1,36 @@
 import Link from "next/link";
-import { ArrowLeft, Bookmark, Share2, ArrowRight, Briefcase, Shield, Home, TrendingUp, Calculator } from "lucide-react";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { ArrowLeft, Bookmark, Share2, Calendar, Clock, TrendingUp, Briefcase, Shield, Home, Calculator, ArrowRight } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { Button } from "@/components/ui/button";
+import { getPostBySlug, getAllPostSlugs } from "@/lib/sanity.api";
+import { urlForImage } from "@/lib/sanity.image";
+import PortableText from "@/components/portable-text";
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+// Generate static params for all blog posts
+export async function generateStaticParams() {
+  const slugs = await getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  const imageUrl = post.mainImage?.asset ? urlForImage(post.mainImage).width(1200).height(600).url() : null;
+  const authorImageUrl = post.author?.image?.asset ? urlForImage(post.author.image).width(48).height(48).url() : null;
+  const authorInitials = post.author?.name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'UN';
+  const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
+
   return (
     <>
       <Navigation />
@@ -24,20 +50,51 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="lg:col-span-2">
               <article>
                 <div className="mb-8">
-                  <span className="inline-block px-4 py-2 bg-teal-100 text-teal-600 font-semibold text-sm rounded-full mb-4">Investing</span>
+                  <span
+                    className="inline-block px-4 py-2 font-semibold text-sm rounded-full mb-4"
+                    style={{
+                      backgroundColor: `${post.category?.color}15`,
+                      color: post.category?.color || '#0d9488'
+                    }}
+                  >
+                    {post.category?.title || 'Uncategorized'}
+                  </span>
                   <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
-                    Complete Guide to Portfolio Management Services in India
+                    {post.title}
                   </h1>
 
                   {/* Author & Meta */}
-                  <div className="flex items-center justify-between border-b border-slate-200 pb-6 mb-8">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-6 mb-8 flex-wrap gap-4">
                     <div className="flex items-center">
-                      <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-4">
-                        RK
-                      </div>
+                      {authorImageUrl ? (
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
+                          <Image
+                            src={authorImageUrl}
+                            alt={post.author?.name || 'Author'}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-4">
+                          {authorInitials}
+                        </div>
+                      )}
                       <div>
-                        <p className="font-bold text-slate-900">Rajesh Kumar</p>
-                        <p className="text-sm text-slate-500">Chief Investment Officer • Feb 1, 2025 • 12 min read</p>
+                        <p className="font-bold text-slate-900">{post.author?.name || 'Anonymous'}</p>
+                        <div className="flex items-center gap-3 text-sm text-slate-500">
+                          {post.author?.role && <span>{post.author.role}</span>}
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" />
+                            {formattedDate}
+                          </span>
+                          {post.readTime && (
+                            <span className="flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              {post.readTime} min read
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <div className="flex space-x-3">
@@ -52,83 +109,45 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 </div>
 
                 {/* Featured Image */}
-                <div className="w-full h-96 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl shadow-xl mb-12 flex items-center justify-center text-white text-3xl font-bold">
-                  Portfolio Management
-                </div>
-
-                {/* Article Content */}
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                    Portfolio Management Services (PMS) has become an increasingly popular investment avenue for high-net-worth individuals in India. With the promise of personalized strategies and professional management, PMS offers a unique blend of flexibility and expertise.
-                  </p>
-
-                  <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">What is Portfolio Management Services?</h2>
-                  <p className="text-slate-700 leading-relaxed mb-6">
-                    Portfolio Management Service is a professional service where qualified and experienced portfolio managers backed by a research team manage equity and equity-related instruments on behalf of clients. Unlike mutual funds, PMS offers direct ownership of securities in your Demat account.
-                  </p>
-
-                  <div className="bg-teal-50 border-l-4 border-teal-600 p-6 my-8 rounded-r-lg">
-                    <p className="text-slate-900 font-semibold mb-2">Key Highlight:</p>
-                    <p className="text-slate-700">
-                      PMS requires a minimum investment of ₹50 lakhs as per SEBI regulations, making it suitable for high-net-worth individuals seeking personalized investment strategies.
-                    </p>
+                {imageUrl ? (
+                  <div className="relative w-full h-96 rounded-2xl shadow-xl mb-12 overflow-hidden">
+                    <Image
+                      src={imageUrl}
+                      alt={post.mainImage?.alt || post.title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
                   </div>
-
-                  <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Types of Portfolio Management Services</h2>
-
-                  <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">1. Discretionary PMS</h3>
-                  <p className="text-slate-700 leading-relaxed mb-6">
-                    In this model, the portfolio manager has complete authority to make investment decisions on behalf of the client. The manager decides which securities to buy, sell, or hold based on the investment strategy agreed upon.
-                  </p>
-
-                  <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">2. Non-Discretionary PMS</h3>
-                  <p className="text-slate-700 leading-relaxed mb-6">
-                    Here, the portfolio manager provides investment advice and recommendations, but the final decision rests with the client. The manager executes trades only after receiving explicit approval.
-                  </p>
-
-                  <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">3. Advisory PMS</h3>
-                  <p className="text-slate-700 leading-relaxed mb-6">
-                    In this model, the portfolio manager simply provides advisory services. The client retains complete control over investment decisions and execution.
-                  </p>
-
-                  <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Benefits of PMS</h2>
-                  <ul className="list-disc list-inside space-y-3 text-slate-700 mb-8">
-                    <li><strong>Personalized Strategy:</strong> Investment approach tailored to your risk profile and goals</li>
-                    <li><strong>Direct Ownership:</strong> Securities are held in your name in your Demat account</li>
-                    <li><strong>Professional Management:</strong> Expert fund managers with proven track records</li>
-                    <li><strong>Transparency:</strong> Complete visibility into portfolio holdings and transactions</li>
-                    <li><strong>Tax Efficiency:</strong> Better control over tax implications through strategic timing</li>
-                    <li><strong>Customization:</strong> Ability to exclude specific sectors or stocks as per preferences</li>
-                  </ul>
-
-                  <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Conclusion</h2>
-                  <p className="text-slate-700 leading-relaxed mb-6">
-                    Portfolio Management Services offer a compelling investment option for wealthy individuals seeking professional management with personalization. However, it's crucial to choose the right PMS provider based on their track record, investment philosophy, and fee structure.
-                  </p>
-
-                  <div className="bg-gradient-to-br from-teal-500 to-teal-600 p-8 rounded-2xl text-white mt-12">
-                    <h3 className="text-2xl font-bold mb-4">Ready to explore PMS for your portfolio?</h3>
-                    <p className="mb-6">Schedule a free consultation with our investment experts to discuss if PMS is right for you.</p>
-                    <Button asChild className="bg-white text-teal-600 hover:bg-teal-50">
-                      <Link href="/#contact" className="inline-flex items-center">
-                        Book Free Consultation
-                        <ArrowRight className="ml-2 h-5 w-5" />
-                      </Link>
-                    </Button>
+                ) : (
+                  <div className="w-full h-96 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl shadow-xl mb-12 flex items-center justify-center text-white text-3xl font-bold">
+                    {post.title.substring(0, 20)}
                   </div>
-                </div>
+                )}
+
+                {/* Article Excerpt */}
+                {post.excerpt && (
+                  <p className="text-xl text-slate-600 leading-relaxed mb-8 font-medium">
+                    {post.excerpt}
+                  </p>
+                )}
+
+                {/* Article Content using PortableText */}
+                <PortableText value={post.body} />
 
                 {/* Tags */}
-                <div className="mt-12 pt-8 border-t border-slate-200">
-                  <p className="text-sm font-semibold text-slate-600 mb-3">Tags:</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm">PMS</span>
-                    <span className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm">Portfolio Management</span>
-                    <span className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm">Investing</span>
-                    <span className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm">Wealth Creation</span>
-                    <span className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm">SEBI</span>
+                {post.tags && post.tags.length > 0 && (
+                  <div className="mt-12 pt-8 border-t border-slate-200">
+                    <p className="text-sm font-semibold text-slate-600 mb-3">Tags:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.map((tag, index) => (
+                        <span key={index} className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </article>
             </div>
 

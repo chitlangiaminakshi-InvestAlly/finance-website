@@ -1,60 +1,25 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getAllPosts, getAllCategories } from "@/lib/sanity.api";
+import { urlForImage } from "@/lib/sanity.image";
 
-export default function BlogSection() {
-  const categories = ["All Topics", "Investing", "Insurance", "Loans", "Tax Planning", "Retirement"];
+export default async function BlogSection() {
+  // Fetch posts and categories from Sanity
+  const allPosts = await getAllPosts();
+  const sanityCategories = await getAllCategories();
 
-  const blogPosts = [
-    {
-      image: "Investing+Tips",
-      category: "Investing",
-      categoryColor: "text-teal-600",
-      title: "5 Simple Rules of Successful Investing for Beginners",
-      excerpt: "Learn the foundational principles that can help you start your investment journey with confidence...",
-      readTime: "5 min read"
-    },
-    {
-      image: "Insurance+Guide",
-      category: "Insurance",
-      categoryColor: "text-green-600",
-      title: "How Much Life Insurance Do You Really Need?",
-      excerpt: "Calculate your insurance needs based on your family's requirements and financial goals...",
-      readTime: "7 min read"
-    },
-    {
-      image: "Home+Loans",
-      category: "Loans",
-      categoryColor: "text-blue-600",
-      title: "Home Loan Guide: Everything First-Time Buyers Need to Know",
-      excerpt: "From eligibility to EMI calculation, understand everything about home loans in India...",
-      readTime: "10 min read"
-    },
-    {
-      image: "Tax+Saving",
-      category: "Tax Planning",
-      categoryColor: "text-purple-600",
-      title: "Top 10 Tax-Saving Investment Options Under Section 80C",
-      excerpt: "Maximize your tax savings with these government-approved investment instruments...",
-      readTime: "8 min read"
-    },
-    {
-      image: "Retirement",
-      category: "Retirement",
-      categoryColor: "text-orange-600",
-      title: "Building Your Retirement Corpus: A Step-by-Step Guide",
-      excerpt: "Start planning for a comfortable retirement today with the right investment strategy...",
-      readTime: "12 min read"
-    },
-    {
-      image: "Mutual+Funds",
-      category: "Investing",
-      categoryColor: "text-pink-600",
-      title: "SIP vs Lump Sum: Which Investment Strategy is Right for You?",
-      excerpt: "Compare systematic investment plans with lump sum investments to find the best approach...",
-      readTime: "6 min read"
-    }
-  ];
+  // Get featured post (first post with featured flag, or first post)
+  const featuredPost = allPosts.find(post => post.featured) || allPosts[0];
+
+  // Get latest 6 posts (excluding featured if it's in the list)
+  const blogPosts = allPosts
+    .filter(post => post._id !== featuredPost?._id)
+    .slice(0, 6);
+
+  // Build categories list
+  const categories = ["All Topics", ...sanityCategories.map(cat => cat.title)];
 
   return (
     <section id="blog" className="py-20 bg-white">
@@ -86,57 +51,101 @@ export default function BlogSection() {
         </div>
 
         {/* Featured Article */}
-        <div className="mb-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl overflow-hidden shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="p-8 md:p-12 text-white">
-              <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">Featured</span>
-              <h3 className="text-3xl md:text-4xl font-black mb-4">Complete Guide to Portfolio Management Services in India</h3>
-              <p className="text-teal-50 mb-6 text-lg">Discover how PMS can help you build wealth through professionally managed, personalized investment strategies. Learn about benefits, costs, and how to get started.</p>
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 rounded-full bg-teal-200 flex items-center justify-center font-bold text-teal-800 mr-3">
-                  RK
+        {featuredPost && (
+          <div className="mb-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="p-8 md:p-12 text-white">
+                <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">Featured</span>
+                <h3 className="text-3xl md:text-4xl font-black mb-4">{featuredPost.title}</h3>
+                <p className="text-teal-50 mb-6 text-lg">{featuredPost.excerpt}</p>
+                <div className="flex items-center mb-6">
+                  {featuredPost.author?.image?.asset ? (
+                    <div className="relative w-12 h-12 rounded-full overflow-hidden mr-3">
+                      <Image
+                        src={urlForImage(featuredPost.author.image).width(48).height(48).url()}
+                        alt={featuredPost.author.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-teal-200 flex items-center justify-center font-bold text-teal-800 mr-3">
+                      {featuredPost.author?.name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'UN'}
+                    </div>
+                  )}
+                  <div>
+                    <p className="font-semibold">{featuredPost.author?.name || 'Anonymous'}</p>
+                    <p className="text-teal-100 text-sm">{featuredPost.author?.role || 'Author'}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold">Rajesh Kumar</p>
-                  <p className="text-teal-100 text-sm">Chief Investment Officer</p>
-                </div>
+                <Link href={`/blog/${featuredPost.slug.current}`} className="inline-flex items-center px-6 py-3 bg-white text-teal-600 font-bold rounded-lg hover:bg-teal-50 transition-colors duration-300">
+                  Read Full Article
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </div>
-              <Link href="/blog/portfolio-management-guide" className="inline-flex items-center px-6 py-3 bg-white text-teal-600 font-bold rounded-lg hover:bg-teal-50 transition-colors duration-300">
-                Read Full Article
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </div>
-            <div className="hidden lg:block">
-              <div className="w-full h-full bg-teal-400 flex items-center justify-center text-white text-2xl font-bold">
-                Featured Article
+              <div className="hidden lg:block relative">
+                {featuredPost.mainImage?.asset ? (
+                  <Image
+                    src={urlForImage(featuredPost.mainImage).width(800).height(600).url()}
+                    alt={featuredPost.mainImage.alt || featuredPost.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-teal-400 flex items-center justify-center text-white text-2xl font-bold">
+                    Featured Article
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <article key={index} className="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
-              <div className={`w-full h-48 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold`}>
-                {post.image.replace(/\+/g, ' ')}
-              </div>
-              <div className="p-6">
-                <span className={`text-xs font-semibold uppercase tracking-wider ${post.categoryColor}`}>{post.category}</span>
-                <h3 className="text-xl font-bold text-slate-900 mt-2 mb-3 hover:text-teal-600 transition-colors duration-300">
-                  <Link href={`/blog/post-${index + 1}`}>{post.title}</Link>
-                </h3>
-                <p className="text-slate-600 mb-4">{post.excerpt}</p>
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                  <span className="text-sm text-slate-500">{post.readTime}</span>
-                  <Link href={`/blog/post-${index + 1}`} className="text-teal-600 hover:text-teal-700 font-semibold text-sm flex items-center">
-                    Read More
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
+          {blogPosts.map((post) => {
+            const imageUrl = post.mainImage?.asset ? urlForImage(post.mainImage).width(400).height(300).url() : null;
+
+            return (
+              <article key={post._id} className="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                {imageUrl ? (
+                  <div className="relative w-full h-48 overflow-hidden">
+                    <Image
+                      src={imageUrl}
+                      alt={post.mainImage?.alt || post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-full h-48 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold">
+                    {post.title.substring(0, 30)}...
+                  </div>
+                )}
+                <div className="p-6">
+                  <span
+                    className="text-xs font-semibold uppercase tracking-wider"
+                    style={{ color: post.category?.color || '#0d9488' }}
+                  >
+                    {post.category?.title || 'Uncategorized'}
+                  </span>
+                  <h3 className="text-xl font-bold text-slate-900 mt-2 mb-3 hover:text-teal-600 transition-colors duration-300">
+                    <Link href={`/blog/${post.slug.current}`}>{post.title}</Link>
+                  </h3>
+                  <p className="text-slate-600 mb-4">{post.excerpt}</p>
+                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                    <span className="text-sm text-slate-500">
+                      {post.readTime ? `${post.readTime} min read` : 'Read'}
+                    </span>
+                    <Link href={`/blog/${post.slug.current}`} className="text-teal-600 hover:text-teal-700 font-semibold text-sm flex items-center">
+                      Read More
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
 
         {/* View All Posts */}
