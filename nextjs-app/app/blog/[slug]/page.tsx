@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Bookmark, Share2, Calendar, Clock, TrendingUp, Briefcase, Shield, Home, Calculator, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, TrendingUp, Briefcase, Shield, Home, Calculator, ArrowRight } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/sanity.api";
 import { urlForImage } from "@/lib/sanity.image";
 import PortableText from "@/components/portable-text";
 import LikeButton from "@/components/like-button";
+import ShareButton from "@/components/share-button";
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
@@ -100,12 +101,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </div>
                     <div className="flex items-center space-x-3">
                       <LikeButton postId={post._id} initialLikeCount={post.likeCount || 0} />
-                      <button className="p-2 text-slate-600 hover:text-teal-600 transition">
-                        <Bookmark className="h-5 w-5" />
-                      </button>
-                      <button className="p-2 text-slate-600 hover:text-teal-600 transition">
-                        <Share2 className="h-5 w-5" />
-                      </button>
+                      <ShareButton
+                        url={`/blog/${post.slug.current}`}
+                        title={post.title}
+                        description={post.excerpt}
+                      />
                     </div>
                   </div>
                 </div>
