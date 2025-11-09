@@ -62,6 +62,7 @@ export interface BlogPost {
   featured: boolean
   tags?: string[]
   readTime?: number
+  likeCount?: number
   seo?: {
     metaTitle?: string
     metaDescription?: string
