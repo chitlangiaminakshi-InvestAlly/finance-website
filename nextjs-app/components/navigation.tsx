@@ -3,55 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown, Briefcase, Shield, Home, CreditCard, ArrowRight, TrendingUp } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const products = [
-    {
-      icon: Briefcase,
-      title: "Portfolio Management",
-      description: "Professional PMS Services",
-      href: "/#products",
-      color: "text-teal-600"
-    },
-    {
-      icon: Shield,
-      title: "Insurance Solutions",
-      description: "Life & Health Coverage",
-      href: "/#products",
-      color: "text-green-600"
-    },
-    {
-      icon: Home,
-      title: "Home & Personal Loans",
-      description: "Best Interest Rates",
-      href: "/#products",
-      color: "text-blue-600"
-    },
-    {
-      icon: TrendingUp,
-      title: "Mutual Funds",
-      description: "SIP & Lumpsum Options",
-      href: "/#products",
-      color: "text-teal-600"
-    },
-    {
-      icon: CreditCard,
-      title: "Credit Cards",
-      description: "Rewards & Cashback",
-      href: "/#products",
-      color: "text-purple-600"
-    },
-  ];
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -82,28 +38,9 @@ export default function Navigation() {
             <Link href="/#team" className="text-slate-700 hover:text-teal-600 font-medium transition-colors duration-300">
               Team
             </Link>
-
-            {/* Products Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="text-slate-700 hover:text-teal-600 font-medium transition-colors duration-300 inline-flex items-center">
-                Products
-                <ChevronDown className="h-4 w-4 ml-1" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64">
-                {products.map((product, index) => (
-                  <DropdownMenuItem key={index} asChild>
-                    <Link href={product.href} className="flex items-start p-3">
-                      <product.icon className={`h-5 w-5 ${product.color} mr-3 mt-0.5`} />
-                      <div>
-                        <div className="font-semibold text-sm">{product.title}</div>
-                        <div className="text-xs text-slate-500">{product.description}</div>
-                      </div>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
+            <Link href="/services" className="text-slate-700 hover:text-teal-600 font-medium transition-colors duration-300">
+              Services
+            </Link>
             <Link href="/#calculators" className="text-slate-700 hover:text-teal-600 font-medium transition-colors duration-300">
               Calculators
             </Link>
@@ -141,8 +78,8 @@ export default function Navigation() {
             <Link href="/#team" className="block text-slate-700 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition-colors duration-300">
               Team
             </Link>
-            <Link href="/#products" className="block text-slate-700 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition-colors duration-300">
-              Products
+            <Link href="/services" className="block text-slate-700 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition-colors duration-300">
+              Services
             </Link>
             <Link href="/#calculators" className="block text-slate-700 hover:text-teal-600 font-medium px-3 py-2 rounded-md transition-colors duration-300">
               Calculators

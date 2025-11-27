@@ -130,7 +130,7 @@ export default function ProductsSection() {
                   {product.minValue && <p className={`text-xl font-bold ${product.checkColor}`}>{product.minValue}</p>}
                 </div>
                 <Button asChild className={`${product.buttonBg} text-white rounded-lg`}>
-                  <Link href="#contact" className="inline-flex items-center">
+                  <Link href="/services" className="inline-flex items-center">
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
@@ -140,18 +140,11 @@ export default function ProductsSection() {
           ))}
         </div>
 
-        {/* Additional Services */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {additionalServices.map((service, index) => (
-            <div
-              key={index}
-              className="text-center p-6 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors duration-300 cursor-pointer"
-            >
-              <service.icon className={`${service.color} h-8 w-8 mx-auto mb-3`} />
-              <h4 className="font-bold text-slate-900">{service.title}</h4>
-              <p className="text-sm text-slate-600">{service.description}</p>
-            </div>
-          ))}
+        {/* Closing Statement */}
+        <div className="mt-12 text-center">
+          <p className="text-xl font-semibold text-slate-900">
+            At <span className="text-teal-600">InvestAlly</span>, your financial success is our only agenda.
+          </p>
         </div>
       </div>
     </section>
