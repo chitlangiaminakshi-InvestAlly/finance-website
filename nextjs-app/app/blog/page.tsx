@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Briefcase, Shield, Home, TrendingUp, Calculator } from "lucide-react";
+import { ArrowLeft, ArrowRight, TrendingUp, Shield, Home, Calculator, FileText } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { getAllPosts, getAllCategories } from "@/lib/sanity.api";
@@ -45,43 +45,43 @@ export default async function BlogListingPage() {
             {/* Sticky Sidebar (Right - 1 column) */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
-                {/* Product Metrics 2x2 */}
+                {/* Our Services 2x2 */}
                 <div className="bg-white rounded-xl shadow-lg p-6">
                   <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
                     <TrendingUp className="h-5 w-5 text-teal-600 mr-2" />
-                    Our Products
+                    Our Services
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
-                    <Link href="/#products" className="group bg-gradient-to-br from-teal-50 to-teal-100 p-4 rounded-lg hover:shadow-md transition">
+                    <Link href="/services#wealth-building" className="group bg-gradient-to-br from-teal-50 to-teal-100 p-4 rounded-lg hover:shadow-md transition">
                       <div className="bg-teal-600 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                        <Briefcase className="text-white h-5 w-5" />
+                        <TrendingUp className="text-white h-5 w-5" />
                       </div>
-                      <p className="font-bold text-slate-900 text-sm mb-1">PMS</p>
-                      <p className="text-xs text-slate-600">₹50L+ min</p>
+                      <p className="font-bold text-slate-900 text-sm mb-1">Wealth Building</p>
+                      <p className="text-xs text-slate-600">MF & PMS</p>
                     </Link>
 
-                    <Link href="/#products" className="group bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg hover:shadow-md transition">
+                    <Link href="/services#insurance-protection" className="group bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg hover:shadow-md transition">
                       <div className="bg-green-600 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
                         <Shield className="text-white h-5 w-5" />
                       </div>
                       <p className="font-bold text-slate-900 text-sm mb-1">Insurance</p>
-                      <p className="text-xs text-slate-600">₹500/mo</p>
+                      <p className="text-xs text-slate-600">Protection</p>
                     </Link>
 
-                    <Link href="/#products" className="group bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg hover:shadow-md transition">
+                    <Link href="/services#loans-financing" className="group bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg hover:shadow-md transition">
                       <div className="bg-blue-600 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
                         <Home className="text-white h-5 w-5" />
                       </div>
                       <p className="font-bold text-slate-900 text-sm mb-1">Loans</p>
-                      <p className="text-xs text-slate-600">8.5% p.a.</p>
+                      <p className="text-xs text-slate-600">Financing</p>
                     </Link>
 
-                    <Link href="/#products" className="group bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg hover:shadow-md transition">
-                      <div className="bg-purple-600 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
-                        <TrendingUp className="text-white h-5 w-5" />
+                    <Link href="/services#additional-services" className="group bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg hover:shadow-md transition">
+                      <div className="bg-orange-600 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                        <FileText className="text-white h-5 w-5" />
                       </div>
-                      <p className="font-bold text-slate-900 text-sm mb-1">Mutual Funds</p>
-                      <p className="text-xs text-slate-600">SIP ₹500+</p>
+                      <p className="font-bold text-slate-900 text-sm mb-1">Tax Advisory</p>
+                      <p className="text-xs text-slate-600">Consultancy</p>
                     </Link>
                   </div>
                 </div>
