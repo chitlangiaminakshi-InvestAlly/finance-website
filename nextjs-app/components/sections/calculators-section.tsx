@@ -242,7 +242,7 @@ export default function CalculatorsSection({ showViewAllLink = true }: { showVie
           {/* Cost of Delay Calculator */}
           <div className="bg-white rounded-2xl shadow-lg p-8 card-hover">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold text-slate-900">Cost of Delay</h3>
+              <h3 className="text-2xl font-bold text-slate-900">Cost of Delay Calculator</h3>
               <div className="bg-orange-100 p-3 rounded-xl">
                 <Clock className="text-orange-600 h-6 w-6" />
               </div>

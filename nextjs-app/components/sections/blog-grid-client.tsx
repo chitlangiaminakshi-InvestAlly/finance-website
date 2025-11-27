@@ -33,17 +33,17 @@ export default function BlogGridClient({ posts, categories, isHomePage = false }
   const [selectedCategory, setSelectedCategory] = useState("All Topics");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const postsPerPage = 6;
 
-  // Detect screen size
+  // Detect screen size after mount to avoid hydration issues
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const checkMobile = () => setIsMobile(window.innerWidth < 768);
-      checkMobile();
-      window.addEventListener('resize', checkMobile);
-      return () => window.removeEventListener('resize', checkMobile);
-    }
+    setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Filter and search posts
@@ -52,7 +52,9 @@ export default function BlogGridClient({ posts, categories, isHomePage = false }
 
     // On home page, limit posts based on screen size
     if (isHomePage) {
-      return filtered.slice(0, isMobile ? 3 : 6);
+      // Show 6 on server, then adjust on client after mount
+      const limit = !mounted ? 6 : (isMobile ? 3 : 6);
+      return filtered.slice(0, limit);
     }
 
     // Filter by category (only on blog page)
@@ -81,7 +83,7 @@ export default function BlogGridClient({ posts, categories, isHomePage = false }
     }
 
     return filtered;
-  }, [posts, selectedCategory, searchQuery, isHomePage, isMobile]);
+  }, [posts, selectedCategory, searchQuery, isHomePage, isMobile, mounted]);
 
   // Pagination
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);

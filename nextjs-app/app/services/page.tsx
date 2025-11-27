@@ -389,11 +389,11 @@ export default function ServicesPage() {
                     </div>
                   </Link>
 
-                  {/* Retirement Calculator */}
+                  {/* Cost Of Delay */}
                   <Link href="/#calculators" className="block p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition group">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-bold text-slate-900 text-sm mb-1">Retirement Calculator</p>
+                        <p className="font-bold text-slate-900 text-sm mb-1">Cost Of Delay Calculator</p>
                         <p className="text-xs text-slate-600">Plan your future</p>
                       </div>
                       <ArrowRight className="h-5 w-5 text-purple-600 group-hover:translate-x-1 transition" />
