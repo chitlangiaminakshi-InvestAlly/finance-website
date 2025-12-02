@@ -25,25 +25,30 @@ export default function TeamSection() {
   const teamMembers = [
     {
       name: "Adarsh Katta",
-      title: "Founder of InvestAlly",
+      title: "Co-Founder, InvestAlly",
+      subtitle: "Chartered Accountant • CFA Level II",
       image: "/adarsh katta.JPG",
-      description: "With over 18 years of experience in portfolio management and wealth advisory, Adarsh has successfully managed ₹2000+ Cr in client assets. His expertise spans across equity research, portfolio construction, and risk management.",
+      description: "Adarsh is the research brain behind InvestAlly. With deep experience as a Private Equity analyst across global institutions like Brookfield, HSBC and JP Morgan, he specialises in identifying the right funds, evaluating risks, and conducting high-quality due diligence. His expertise helps clients make smarter, more informed investment decisions. He brings a sharp analytical eye, a disciplined research approach, and a strong understanding of how great investments are built — ensuring that data, clarity, and conviction back every recommendation at InvestAlly.",
       credentials: [
-        { icon: Award, title: "SEBI RIA", subtitle: "Registration: INA000012345" },
-        { icon: Shield, title: "Mutual Fund Distributor", subtitle: "ARN: INP000004567" },
-        { icon: Users, title: "Specialization", subtitle: "Estate | Tax | Insurance" },
+        { icon: Award, title: "Chartered Accountant", subtitle: "CFA Level II" },
+        { icon: Shield, title: "Mutual Fund Distributor", subtitle: "ARN Number: 339359" },
+        { icon: Briefcase, title: "Experience", subtitle: "PE Analyst - Brookfield, HSBC, JP Morgan" },
       ],
       color: "teal"
     },
     {
       name: "Minakshi Maheshwari",
-      title: "Founder of InvestAlly",
+      title: "Co-Founder, InvestAlly",
+      subtitle: "Chartered Accountant · Business Analyst",
+      tagline: "CA Precision. Data-Driven Growth",
+      location: "Mumbai, India",
+      linkedin: "https://www.linkedin.com/in/minaxi-maheshwari-207bb3b0/",
       image: "/minakshi maheshwari.jpg",
-      description: "Minakshi brings 15+ years of experience in financial planning, insurance advisory, and tax optimization. She specializes in comprehensive wealth management solutions for HNI families and has helped over 3000 clients achieve financial security.",
+      description: "Minakshi is a Chartered Accountant and Business Analyst who helps people make confident financial decisions. Her experience in understanding numbers, analysing risks, and simplifying complex financial information ensures that every client gets clear guidance tailored to their goals. She focuses on creating practical, easy-to-follow plans that help families protect, grow, and manage their wealth with confidence.",
       credentials: [
-        { icon: Award, title: "SEBI RIA", subtitle: "Registration: INA000067890" },
-        { icon: Shield, title: "Mutual Fund Distributor", subtitle: "ARN: INP000004567" },
-        { icon: Users, title: "Specialization", subtitle: "Estate | Tax | Insurance" },
+        { icon: Award, title: "Chartered Accountant", subtitle: "Business Analyst" },
+        { icon: Shield, title: "Mutual Fund Distributor", subtitle: "ARN Number: 345644" },
+        { icon: Users, title: "Specialization", subtitle: "Financial Planning & Risk Analysis" },
       ],
       color: "green"
     }
@@ -115,13 +120,24 @@ export default function TeamSection() {
 
                     {/* Name and Title */}
                     <h3 className="text-2xl font-black text-slate-900 mb-1">{member.name}</h3>
-                    <p className={`${colors.text} font-semibold mb-3`}>{member.title}</p>
+                    <p className={`${colors.text} font-semibold mb-1`}>{member.title}</p>
+                    {member.subtitle && (
+                      <p className="text-slate-600 text-sm font-medium mb-2">{member.subtitle}</p>
+                    )}
+                    {member.tagline && (
+                      <p className={`${colors.text} text-sm font-semibold italic mb-2`}>{member.tagline}</p>
+                    )}
+                    {member.location && (
+                      <p className="text-slate-500 text-xs mb-3">{member.location}</p>
+                    )}
 
                     {/* Social Links */}
                     <div className="flex space-x-3 mb-6">
-                      <a href="#" className={`${colors.socialBg} p-2 rounded-lg ${colors.socialHover} transition-all duration-300`}>
-                        <Linkedin className={`h-5 w-5 ${colors.icon}`} />
-                      </a>
+                      {member.linkedin && (
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className={`${colors.socialBg} p-2 rounded-lg ${colors.socialHover} transition-all duration-300`}>
+                          <Linkedin className={`h-5 w-5 ${colors.icon}`} />
+                        </a>
+                      )}
                       <a href="#" className={`${colors.socialBg} p-2 rounded-lg ${colors.socialHover} transition-all duration-300`}>
                         <Mail className={`h-5 w-5 ${colors.icon}`} />
                       </a>

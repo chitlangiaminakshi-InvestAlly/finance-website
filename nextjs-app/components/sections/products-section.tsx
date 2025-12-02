@@ -45,9 +45,9 @@ export default function ProductsSection() {
       title: "Loans & Financing",
       description: "Whether you're buying your dream home or need personal financing, we secure the best rates and fastest approvals. Our network and expertise turn loan applications from headaches into stepping stones.",
       features: [
-        "Home Loans - 8.50% p.a. onwards",
+        "Home Loans - Competitive interest rates",
         "Personal Loans - Quick Approvals",
-        "Up to 30 Years Tenure",
+        "Flexible tenure options",
       ],
       minLabel: "",
       minValue: "",

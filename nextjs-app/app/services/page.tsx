@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, TrendingUp, Shield, Home, Check, ArrowRight, FileText, BookOpen, PieChart, Heart, DollarSign, CreditCard, Calculator } from "lucide-react";
+import { ArrowLeft, TrendingUp, Shield, Home, Check, ArrowRight, FileText, BookOpen, PieChart, Heart, DollarSign, CreditCard, Calculator, Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -31,6 +31,48 @@ export default function ServicesPage() {
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             Comprehensive financial solutions designed to help you build wealth, protect your family, and achieve your dreams.
           </p>
+        </div>
+
+        {/* WE FILTER IT FOR YOU Section */}
+        <div className="mb-16">
+          <div className="bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 rounded-2xl p-8 md:p-12 border-2 border-teal-200 shadow-lg">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                WE FILTER IT <span className="gradient-text">FOR YOU</span>
+              </h2>
+              <p className="text-xl text-slate-700 mb-6 max-w-3xl mx-auto font-semibold">
+                We help you navigate across a sea of financial products.
+              </p>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                There are more than <span className="text-teal-600 font-bold">10,000 financial products</span>. Based on research, our team selects a handful of investment instruments as per your risk profile & life goals.
+              </p>
+            </div>
+
+            {/* Product Categories */}
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-8">
+              <span className="px-5 py-2.5 bg-white text-teal-700 rounded-full text-sm font-bold shadow-sm border-2 border-teal-200 hover:shadow-md transition-shadow">
+                MUTUAL FUNDS
+              </span>
+              <span className="px-5 py-2.5 bg-white text-green-700 rounded-full text-sm font-bold shadow-sm border-2 border-green-200 hover:shadow-md transition-shadow">
+                LIFE INSURANCE
+              </span>
+              <span className="px-5 py-2.5 bg-white text-blue-700 rounded-full text-sm font-bold shadow-sm border-2 border-blue-200 hover:shadow-md transition-shadow">
+                FIXED DEPOSITS
+              </span>
+              <span className="px-5 py-2.5 bg-white text-purple-700 rounded-full text-sm font-bold shadow-sm border-2 border-purple-200 hover:shadow-md transition-shadow">
+                HEALTH INSURANCE
+              </span>
+              <span className="px-5 py-2.5 bg-white text-indigo-700 rounded-full text-sm font-bold shadow-sm border-2 border-indigo-200 hover:shadow-md transition-shadow">
+                ALTERNATIVE INVESTMENT FUNDS
+              </span>
+              <span className="px-5 py-2.5 bg-white text-orange-700 rounded-full text-sm font-bold shadow-sm border-2 border-orange-200 hover:shadow-md transition-shadow">
+                DIGITAL GOLD
+              </span>
+              <span className="px-5 py-2.5 bg-white text-pink-700 rounded-full text-sm font-bold shadow-sm border-2 border-pink-200 hover:shadow-md transition-shadow">
+                PORTFOLIO MANAGEMENT SERVICES
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Main Content with Sidebar */}
