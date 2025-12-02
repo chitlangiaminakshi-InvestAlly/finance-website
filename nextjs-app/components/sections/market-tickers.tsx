@@ -3,8 +3,8 @@ import TradingViewWidget from "../tradingview-widget";
 export default function MarketTickers() {
   const symbols = [
     { symbol: "BSE:SENSEX", title: "SENSEX" },
-    { symbol: "FX_IDC:XAUINR", title: "Gold (INR)" },
-    { symbol: "FX_IDC:XAGINR", title: "Silver (INR)" }
+    { symbol: "FX_IDC:XAUINRG", title: "Gold (INR)" },
+    { symbol: "FX_IDC:XAGINRG", title: "Silver (INR)" }
   ];
 
   return (
