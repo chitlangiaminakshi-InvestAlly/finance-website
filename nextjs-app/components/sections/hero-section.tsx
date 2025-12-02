@@ -12,7 +12,7 @@ export default function HeroSection() {
           <div>
             <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
               <Award className="h-4 w-4 mr-2" />
-              Trusted by Indian Families
+              Trusted by Smart Investors Across India
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
               We don't sell Investments-

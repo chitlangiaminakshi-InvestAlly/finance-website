@@ -340,7 +340,7 @@ export default function CalculatorsPage() {
                         <TrendingUp className="text-white h-5 w-5" />
                       </div>
                       <p className="font-bold text-slate-900 text-sm mb-1">Wealth Building</p>
-                      <p className="text-xs text-slate-600">MF & PMS</p>
+                      <p className="text-xs text-slate-600">MF & PMS Advisory</p>
                     </Link>
 
                     <Link href="/services#insurance-protection" className="group bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg hover:shadow-md transition">

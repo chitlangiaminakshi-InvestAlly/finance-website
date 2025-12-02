@@ -25,8 +25,9 @@ export default function ProductsSection() {
     {
       icon: Shield,
       title: "Insurance & Protection",
-      description: "Your protection matters more than our commission. We decode complex policies, ensuring you're covered for real risks—not oversold. From selection to claims, we're your advocate, making insurance work for you.",
+      description: "Your protection matters more than our commission. We decode complex policies, ensuring you're covered for real risks—not oversold. From selection to claims, we're your advocate, making insurance work for you. ",
       features: [
+        "Insurance advisory services available. Execution done through licensed partners",
         "Term & Health Insurance",
         "Critical Illness Coverage",
         "Child & Family Plans",

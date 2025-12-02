@@ -12,6 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Investally - Your Partner in Financial Success | PMS, Insurance & Loans",
   description: "Investally helps Indian families achieve financial freedom through expert guidance in Portfolio Management, Insurance, and Home Loans. Learn, calculate, and grow your wealth.",
+  icons: {
+    icon: "/investally_only_logo.png",
+    shortcut: "/investally_only_logo.png",
+    apple: "/investally_only_logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -15,13 +15,21 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/investally_logo.png"
-                alt="Investally Logo"
-                width={180}
-                height={60}
-                className="h-12 w-auto"
+                src="/investally_only_logo.png"
+                alt="Investally Icon"
+                width={48}
+                height={48}
+                className="h-10 w-auto"
+                priority
+              />
+              <Image
+                src="/investally_logo_name.png"
+                alt="Investally"
+                width={200}
+                height={40}
+                className="h-8 w-auto"
                 priority
               />
             </Link>
