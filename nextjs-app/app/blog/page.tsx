@@ -80,7 +80,7 @@ export default async function BlogListingPage() {
                       <div className="bg-orange-600 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
                         <FileText className="text-white h-5 w-5" />
                       </div>
-                      <p className="font-bold text-slate-900 text-sm mb-1">Tax Advisory</p>
+                      <p className="font-bold text-slate-900 text-sm mb-1">Investment Tax Advisory</p>
                       <p className="text-xs text-slate-600">Consultancy</p>
                     </Link>
                   </div>

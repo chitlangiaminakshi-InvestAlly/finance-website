@@ -56,8 +56,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#products" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
-                  Products
+                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                  Services
                 </Link>
               </li>
               <li>
@@ -73,22 +73,22 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/#products" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Portfolio Management
                 </Link>
               </li>
               <li>
-                <Link href="/#products" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Insurance Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/#products" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Home Loans
                 </Link>
               </li>
               <li>
-                <Link href="/#products" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Mutual Funds
                 </Link>
               </li>
@@ -96,8 +96,27 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Disclaimers */}
+        <div className="mt-8 pt-8 border-t border-slate-800">
+          <div className="space-y-4">
+            {/* Regulatory Disclaimer */}
+            <div className="bg-slate-800/50 rounded-lg p-4">
+              <p className="text-xs text-slate-400 leading-relaxed">
+                <span className="font-semibold text-slate-300">Regulatory Information:</span> Mutual Fund Distribution (ARN 339359) & Insurance Solutions (as an authorised PoSP associated with IRDAI-licensed insurance broker.)
+              </p>
+            </div>
+
+            {/* Investment Disclaimer */}
+            <div className="bg-slate-800/50 rounded-lg p-4">
+              <p className="text-xs text-slate-400 leading-relaxed">
+                <span className="font-semibold text-slate-300">Investment Disclaimer:</span> Mutual Fund investments are subject to market risks, read all scheme related documents carefully. The NAVs of the schemes may go up or down depending upon the factors and forces affecting the securities market including the fluctuations in the interest rates. The past performance of the mutual funds is not necessarily indicative of future performance of the schemes. The Mutual Fund is not guaranteeing or assuring any dividend under any of the schemes and the same is subject to the availability and adequacy of distributable surplus. Investors are requested to review the prospectus carefully and obtain expert professional advice with regard to specific legal, tax and financial implications of the investment/participation in the scheme.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 text-center text-slate-400">
+        <div className="pt-6 border-t border-slate-800 mt-6 text-center text-slate-400">
           <p>&copy; {new Date().getFullYear()} Investally. All rights reserved.</p>
         </div>
       </div>

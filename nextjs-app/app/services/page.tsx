@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft, TrendingUp, Shield, Home, Check, ArrowRight, FileText, BookOpen, PieChart, Heart, DollarSign, CreditCard, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 
 export const metadata = {
   title: "Our Services - Investally | Comprehensive Financial Solutions",
@@ -9,7 +11,9 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="pt-28 pb-20">
+    <>
+      <Navigation />
+      <div className="pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="mb-8">
@@ -280,8 +284,8 @@ export default function ServicesPage() {
                         <Home className="text-blue-600 h-5 w-5 mr-2" />
                         <h4 className="font-bold text-slate-900">Home Loans</h4>
                       </div>
-                      <p className="text-sm text-slate-600 mb-2">Starting at 8.50% p.a.</p>
-                      <p className="text-xs text-slate-500">Up to 30 years tenure</p>
+                      <p className="text-sm text-slate-600 mb-2">Competitive interest rates</p>
+                      <p className="text-xs text-slate-500">Flexible tenure options</p>
                     </div>
                     <div className="bg-white rounded-xl p-5 border border-blue-200">
                       <div className="flex items-center mb-3">
@@ -422,5 +426,7 @@ export default function ServicesPage() {
         </div>
       </div>
     </div>
+    <Footer />
+  </>
   );
 }
