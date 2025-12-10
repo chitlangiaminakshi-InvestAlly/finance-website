@@ -12,49 +12,64 @@ export default function TestimonialsSection() {
       text: "Investally has been managing my portfolio for the last 6 months, and I'm genuinely happy with their recommendations. They explain things clearly, keep me updated, and suggest what truly fits my goals. Adarsh's market insight and instinct give me full confidence that my money is in safe hands and the returns speak for themselves.",
       name: "CA Vishal Mittal, CFA",
       role: "Salaried, Private Sector Employee, Age 25, Mumbai",
-      initials: "VM"
+      initials: "VM",
+      products: ["Mutual Funds"]
     },
     {
       text: "InvestAlly brought clarity and confidence to my entire investment journey. Everything finally feels simple, structured and aligned with my goals.",
       name: "Shailesh Tiwari",
       role: "Businessman, Age 60, Jaipur",
-      initials: "ST"
+      initials: "ST",
+      products: ["Mutual Funds"]
     },
     {
       text: "Every discussion with Adarsh Katta gives you a deeper insight on the finance world. InvestAlly helped me build an understanding of the various Mutual funds available in the market and were patient enough to answer all my why's. Their quarterly updates give me more confidence in the funds I am invested in.",
       name: "Abhinav Chitlangia",
       role: "Businessman, Age 35, Raxaul, Bihar",
-      initials: "AC"
+      initials: "AC",
+      products: ["Mutual Funds"]
     },
     {
       text: "Invest smarter with InvestAlly. Avoid Duplication in the name of Diversification.",
       name: "Ram Gopal Chitlangia",
       role: "Commodity Broker, Age 66, Sikar, Rajasthan",
-      initials: "RC"
+      initials: "RC",
+      products: ["Mutual Funds"]
     },
     {
       text: "Investally helped me structure my portfolio in the most efficient way- i reduced my holding from some 20+ mutual funds to a lean and clean 5 mutual funds. I now clearly understand the difference between Duplication and Diversification.",
       name: "Nishant Lakhotiya",
       role: "Businessman, Age 37, Panipat",
-      initials: "NL"
+      initials: "NL",
+      products: ["Mutual Funds"]
     },
     {
       text: "InvestAlly maintains my family portfolio- keeping in mind the risks that we can take as a couple and our financial goals. It has been a great experience working with them. Very professional and always available. Thank You!",
       name: "Sarika Lakhotiya",
       role: "Businesswomen, Age 36, Panipat",
-      initials: "SL"
+      initials: "SL",
+      products: ["Mutual Funds"]
     },
     {
       text: "Talking to Adarsh and Minakshi has simplified the finance world at large for me. Their insights help me invest confidently. InvestAlly filters the news from the noise in the market, educates and builds your confidence in your financial journey.",
       name: "Anurag Rajput",
       role: "IT Consultant, Age 28, Mumbai",
-      initials: "AR"
+      initials: "AR",
+      products: ["Mutual Funds"]
     },
     {
       text: "I always felt overwhelmed with mutual funds and insurance. InvestAlly made everything simple. They understood my goals, created a plan, and walked me through every step. What I love most is the transparency. I know they're genuinely looking out for my best interest. I finally feel in control of my money.",
       name: "Saumya",
       role: "Business, Age 30, Mumbai",
-      initials: "S"
+      initials: "S",
+      products: ["Mutual Funds"]
+    },
+    {
+      text: "InvestAlly made investing feel simple and stress-free. Minakshi and Adarsh took the time to understand my goals, explained every fund choice clearly, and created a plan that actually feels achievable. I've never felt more confident about my investments. Highly recommend their personalized approach!",
+      name: "Akanksha",
+      role: "Salaried, Age 37, Dubai",
+      initials: "A",
+      products: ["Mutual Funds"]
     }
   ];
 
@@ -125,14 +140,29 @@ export default function TestimonialsSection() {
                     </div>
 
                     {/* Client info at bottom */}
-                    <div className="flex items-center mt-6 pt-6 border-t border-slate-100">
-                      <div className="w-14 h-14 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-4">
-                        {testimonial.initials}
+                    <div className="mt-6 pt-6 border-t border-slate-100">
+                      <div className="flex items-center mb-3">
+                        <div className="w-14 h-14 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-4">
+                          {testimonial.initials}
+                        </div>
+                        <div>
+                          <p className="font-bold text-slate-900">{testimonial.name}</p>
+                          <p className="text-sm text-slate-500">{testimonial.role}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-bold text-slate-900">{testimonial.name}</p>
-                        <p className="text-sm text-slate-500">{testimonial.role}</p>
-                      </div>
+                      {/* Product badges */}
+                      {testimonial.products && testimonial.products.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {testimonial.products.map((product, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-semibold rounded-full border border-teal-200"
+                            >
+                              {product}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
