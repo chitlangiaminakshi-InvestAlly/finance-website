@@ -106,8 +106,8 @@ export default function TeamSection() {
             {teamMembers.map((member, index) => {
               const colors = colorSchemes[member.color as keyof typeof colorSchemes];
               return (
-                <div key={index} className="bg-slate-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 p-8">
-                  <div className="flex flex-col items-center text-center">
+                <div key={index} className="bg-slate-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 p-8 flex flex-col">
+                  <div className="flex flex-col items-center text-center flex-grow">
                     {/* Square Image */}
                     <div className="relative w-48 h-48 mb-4">
                       <Image
@@ -139,22 +139,24 @@ export default function TeamSection() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed text-left">
-                      {member.description}
-                    </p>
-
-                    {/* Credentials */}
-                    <div className="w-full space-y-3">
-                      {member.credentials.map((cred, idx) => (
-                        <div key={idx} className="bg-white rounded-lg p-3 text-left">
-                          <div className="flex items-center mb-1">
-                            <cred.icon className={`h-4 w-4 ${colors.icon} mr-2`} />
-                            <p className="text-sm font-semibold text-slate-900">{cred.title}</p>
-                          </div>
-                          <p className="text-xs text-slate-500 ml-6">{cred.subtitle}</p>
-                        </div>
-                      ))}
+                    <div className="flex-grow flex items-center">
+                      <p className="text-slate-600 text-sm mb-6 leading-relaxed text-center">
+                        {member.description}
+                      </p>
                     </div>
+                  </div>
+
+                  {/* Credentials - Aligned to bottom */}
+                  <div className="w-full space-y-3 mt-auto">
+                    {member.credentials.map((cred, idx) => (
+                      <div key={idx} className="bg-white rounded-lg p-3 text-left">
+                        <div className="flex items-center mb-1">
+                          <cred.icon className={`h-4 w-4 ${colors.icon} mr-2`} />
+                          <p className="text-sm font-semibold text-slate-900">{cred.title}</p>
+                        </div>
+                        <p className="text-xs text-slate-500 ml-6">{cred.subtitle}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );

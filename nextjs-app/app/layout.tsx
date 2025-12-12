@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Investally - Your Partner in Financial Success | PMS, Insurance & Loans",
-  description: "Investally helps Indian families achieve financial freedom through expert guidance in Portfolio Management, Insurance, and Home Loans. Learn, calculate, and grow your wealth.",
+  title: "Investally - We don't sell Investments - We build Investors",
+  description: "Personalized financial guidance that grows with you - built on trust, transparency, and continuous review. Because wealth creation isn't a one-time act- it's a lifelong relationship.",
   icons: {
     icon: "/investally_only_logo.png",
     shortcut: "/investally_only_logo.png",
@@ -45,7 +45,7 @@ export default function RootLayout({
                 (function(){
                   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
                   s1.async=true;
-                  s1.src='https://embed.tawk.to/691028f00345ae195a0f5bae/1j9jhvrco';
+                  s1.src='https://embed.tawk.to/693bb6847e41ef1988ae9158/1jc8k1ub9';
                   s1.charset='UTF-8';
                   s1.setAttribute('crossorigin','*');
                   s0.parentNode.insertBefore(s1,s0);

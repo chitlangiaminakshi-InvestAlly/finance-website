@@ -40,10 +40,10 @@ export default function ContactSection() {
           <div className="bg-slate-50 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-slate-900 mb-6">Send us a message</h3>
             <iframe
-              data-tally-src="https://tally.so/embed/zxxyZM?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              data-tally-src="https://tally.so/embed/Bza5BN?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
               loading="lazy"
               width="100%"
-              height="542"
+              height="552"
               frameBorder="0"
               marginHeight={0}
               marginWidth={0}
@@ -73,8 +73,8 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Phone</p>
-                    <a href="tel:+919108313032" className="text-teal-600 hover:text-teal-700 font-medium">
-                      +91 91083 13032
+                    <a href="tel:+919166779632" className="text-teal-600 hover:text-teal-700 font-medium">
+                      +91 91667 79632
                     </a>
                   </div>
                 </div>
