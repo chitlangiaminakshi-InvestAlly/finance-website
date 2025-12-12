@@ -40,18 +40,18 @@ export default function HeroSection() {
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/20">
-              <div>
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 mt-12 pt-8 border-t border-white/20">
+              <div className="text-center">
                 <p className="text-3xl font-bold">₹5Cr+</p>
-                <p className="text-teal-100 text-sm">Assets Under Management</p>
+                <p className="text-teal-100 text-sm mt-1">Assets Under Management</p>
               </div>
-              <div>
+              <div className="text-center">
                 <p className="text-3xl font-bold">50+</p>
-                <p className="text-teal-100 text-sm">Happy Clients</p>
+                <p className="text-teal-100 text-sm mt-1">Happy Clients</p>
               </div>
-              <div>
+              <div className="text-center">
                 <p className="text-3xl font-bold">15+ Years</p>
-                <p className="text-teal-100 text-sm">Experience</p>
+                <p className="text-teal-100 text-sm mt-1">Experience</p>
               </div>
             </div>
           </div>
@@ -61,12 +61,12 @@ export default function HeroSection() {
             <div className="relative z-10">
               <div className="rounded-2xl shadow-2xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 p-8 aspect-[6/5]">
                 <div className="w-full h-full flex items-center justify-center text-teal-100 text-xl font-semibold">
-                 <Image
-                  src={"/hero-section-image.png"}
-                  alt={"Financial Freedom"}
-                  fill
-                  className="object-cover"
-                />
+                  <Image
+                    src={"/hero-section-image.png"}
+                    alt={"Financial Freedom"}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
