@@ -13,9 +13,18 @@ export const metadata: Metadata = {
   title: "Investally - We don't sell Investments - We build Investors",
   description: "Personalized financial guidance that grows with you - built on trust, transparency, and continuous review. Because wealth creation isn't a one-time act- it's a lifelong relationship.",
   icons: {
-    icon: "/investally_only_logo.png",
+    icon: [
+      { url: "/investally_only_logo.png", sizes: "any" },
+      { url: "/investally_only_logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/investally_only_logo.png", sizes: "16x16", type: "image/png" },
+    ],
     shortcut: "/investally_only_logo.png",
     apple: "/investally_only_logo.png",
+  },
+  openGraph: {
+    title: "Investally - We don't sell Investments - We build Investors",
+    description: "Personalized financial guidance that grows with you - built on trust, transparency, and continuous review.",
+    images: ["/investally_only_logo.png"],
   },
 };
 
