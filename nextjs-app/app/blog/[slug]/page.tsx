@@ -24,7 +24,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
-  const imageUrl = post.mainImage?.asset ? urlForImage(post.mainImage).width(1200).height(600).url() : null;
+  const imageUrl = post.mainImage?.asset ? urlForImage(post.mainImage).width(1200).url() : null;
   const authorImageUrl = post.author?.image?.asset ? urlForImage(post.author.image).width(48).height(48).url() : null;
   const authorInitials = post.author?.name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'UN';
   const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
@@ -112,7 +112,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                 {/* Featured Image */}
                 {imageUrl ? (
-                  <div className="relative w-full h-64 sm:h-80 md:h-96 rounded-2xl shadow-xl mb-12 overflow-hidden bg-slate-100">
+                  <div className="relative w-full h-80 sm:h-96 md:h-[500px] rounded-2xl shadow-xl mb-12 overflow-hidden bg-slate-100">
                     <Image
                       src={imageUrl}
                       alt={post.mainImage?.alt || post.title}

@@ -6,9 +6,9 @@ const builder = imageUrlBuilder(client)
 
 export function urlForImage(source: SanityImageSource) {
   // The builder automatically picks up hotspot and crop data from the source
-  // Using fit('crop') ensures the image is cropped to the requested dimensions
-  // while respecting the hotspot focal point
-  return builder.image(source).auto('format').fit('crop')
+  // Using fit('max') ensures the entire image fits within the requested dimensions
+  // while maintaining aspect ratio and preventing any cropping
+  return builder.image(source).auto('format').fit('max')
 }
 
 // Helper function to get optimized image URL with specific dimensions
