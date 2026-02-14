@@ -85,6 +85,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         className={`${inter.variable} font-sans antialiased bg-slate-50 text-slate-900`}
+        suppressHydrationWarning
       >
         {/* JSON-LD Structured Data for Google */}
         <Script

@@ -10,6 +10,7 @@ import PortableText from "@/components/portable-text";
 import LikeButton from "@/components/like-button";
 import ShareButton from "@/components/share-button";
 import CopyAttribution from "@/components/copy-attribution";
+import TableOfContents from "@/components/table-of-contents";
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
@@ -46,6 +47,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               Back to Blog
             </Link>
           </div>
+
+
 
           {/* Main Content with Sidebar */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -129,6 +132,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </div>
                   )}
 
+                  {/* Mobile Table of Contents - Sticky Top (Just below main image) */}
+                  {/* Mobile Table of Contents - Sticky Top (Just below main image) */}
+                  <TableOfContents content={post.body} isMobile={true} />
+
                   {/* Article Excerpt */}
                   {post.excerpt && (
                     <p className="text-xl text-slate-600 leading-relaxed mb-8 font-medium">
@@ -159,6 +166,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Sticky Sidebar (Right - 1 column) */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6 h-fit">
+                {/* Table of Contents */}
+                <TableOfContents content={post.body} />
+
                 {/* Our Services 2x2 */}
                 <div className="bg-slate-50 rounded-xl shadow-lg p-6">
                   <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center">

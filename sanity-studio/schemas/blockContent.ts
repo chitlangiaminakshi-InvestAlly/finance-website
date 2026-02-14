@@ -151,6 +151,9 @@ export default defineType({
         },
       },
     }),
+    defineArrayMember({
+      type: 'table',
+    }),
   ],
 })
 

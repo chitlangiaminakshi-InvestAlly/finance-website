@@ -34,32 +34,59 @@ function getVideoEmbedUrl(videoUrl: string, videoType: string): string | null {
   return null
 }
 
+// Helper to generate slug from text
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+}
+
 const components: PortableTextComponents = {
   unknownType: ({ value }) => {
     console.warn('Unknown PortableText type:', value?._type, value)
     return null
   },
   block: {
-    h1: ({ children }) => (
-      <h1 className="text-4xl font-black text-slate-900 mt-12 mb-6 first:mt-0">
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-3xl font-bold text-slate-900 mt-10 mb-5">
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">
-        {children}
-      </h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className="text-xl font-semibold text-slate-900 mt-6 mb-3">
-        {children}
-      </h4>
-    ),
+    h1: ({ children, value }) => {
+      const text = value?.children?.map((child: any) => child.text).join('') || ''
+      const id = slugify(text)
+      return (
+        <h1 id={id} className="text-4xl font-black text-slate-900 mt-12 mb-6 first:mt-0 scroll-mt-24">
+          {children}
+        </h1>
+      )
+    },
+    h2: ({ children, value }) => {
+      const text = value?.children?.map((child: any) => child.text).join('') || ''
+      const id = slugify(text)
+      return (
+        <h2 id={id} className="text-3xl font-bold text-slate-900 mt-10 mb-5 scroll-mt-24">
+          {children}
+        </h2>
+      )
+    },
+    h3: ({ children, value }) => {
+      const text = value?.children?.map((child: any) => child.text).join('') || ''
+      const id = slugify(text)
+      return (
+        <h3 id={id} className="text-2xl font-bold text-slate-900 mt-8 mb-4 scroll-mt-24">
+          {children}
+        </h3>
+      )
+    },
+    h4: ({ children, value }) => {
+      const text = value?.children?.map((child: any) => child.text).join('') || ''
+      const id = slugify(text)
+      return (
+        <h4 id={id} className="text-xl font-semibold text-slate-900 mt-6 mb-3 scroll-mt-24">
+          {children}
+        </h4>
+      )
+    },
     normal: ({ children }) => (
       <p className="text-slate-700 leading-relaxed mb-6">
         {children}
@@ -216,6 +243,47 @@ const components: PortableTextComponents = {
             </figcaption>
           )}
         </figure>
+      )
+    },
+    table: ({ value }) => {
+      if (!value?.rows || !value.rows.length) return null
+
+      return (
+        <div className="my-8 overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
+          <table className="w-full text-left border-collapse bg-white">
+            <tbody>
+              {value.rows.map((row: any, rowIndex: number) => {
+                const isHeader = rowIndex === 0;
+                return (
+                  <tr
+                    key={row._key || rowIndex}
+                    className={rowIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50'}
+                  >
+                    {row.cells.map((cell: string, cellIndex: number) => {
+                      const CellTag = isHeader ? 'th' : 'td';
+                      return (
+                        <CellTag
+                          key={cellIndex}
+                          className={`
+                            p-4 border-b border-slate-200
+                            ${isHeader
+                              ? 'bg-slate-100 font-bold text-slate-900 border-slate-300'
+                              : 'text-slate-700'
+                            }
+                            ${cellIndex === 0 ? 'pl-6' : ''}
+                            ${cellIndex === row.cells.length - 1 ? 'pr-6' : ''}
+                          `}
+                        >
+                          {cell}
+                        </CellTag>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )
     },
   },
