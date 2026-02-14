@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { List, ChevronDown, ChevronUp } from "lucide-react";
+import { slugify } from "@/lib/utils";
 
 interface TOCProps {
     content: any[];
@@ -15,25 +16,26 @@ export default function TableOfContents({ content, isMobile = false }: TOCProps)
     const scrollContainerRef = useRef<HTMLElement>(null);
 
     // Extract headings from content
+    const counts: Record<string, number> = {};
     const headings = content
-        .filter((block) => block._type === "block" && (block.style == "h2" || block.style == "h3")) // Only h2 and h3 headings should be present in the table of content
         .map((block) => {
-            const text = block.children?.map((child: any) => child.text).join("") || "";
-            const slug = text
-                .toString()
-                .toLowerCase()
-                .trim()
-                .replace(/\s+/g, "-")
-                .replace(/[^\w\-]+/g, "")
-                .replace(/\-\-+/g, "-");
+            if (block._type === "block" && ["h1", "h2", "h3", "h4"].includes(block.style)) {
+                const text = block.children?.map((child: any) => child.text).join("") || "";
+                const slug = slugify(text);
+                const count = counts[slug] || 0;
+                counts[slug] = count + 1;
+                const id = count > 0 ? `${slug}-${count}` : slug;
 
-            return {
-                id: slug,
-                text,
-                level: parseInt(block.style.replace("h", "")),
-            };
+                return {
+                    id,
+                    text,
+                    level: parseInt(block.style.replace("h", "")),
+                    style: block.style,
+                };
+            }
+            return null;
         })
-        .filter((heading) => heading.text.length > 0);
+        .filter((heading) => heading && (heading.style === "h2" || heading.style === "h3") && heading.text.length > 0) as { id: string; text: string; level: number; style: string }[];
 
     useEffect(() => {
         const observer = new IntersectionObserver(

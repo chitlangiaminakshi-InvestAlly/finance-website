@@ -1,7 +1,9 @@
 import { PortableText as PortableTextReact, PortableTextComponents } from '@portabletext/react'
+import { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { urlForImage } from '@/lib/sanity.image'
+import { slugify } from '@/lib/utils'
 
 // Helper function to extract video ID and generate embed URL
 function getVideoEmbedUrl(videoUrl: string, videoType: string): string | null {
@@ -34,16 +36,7 @@ function getVideoEmbedUrl(videoUrl: string, videoType: string): string | null {
   return null
 }
 
-// Helper to generate slug from text
-const slugify = (text: string) => {
-  return text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-}
+
 
 const components: PortableTextComponents = {
   unknownType: ({ value }) => {
@@ -52,8 +45,7 @@ const components: PortableTextComponents = {
   },
   block: {
     h1: ({ children, value }) => {
-      const text = value?.children?.map((child: any) => child.text).join('') || ''
-      const id = slugify(text)
+      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
       return (
         <h1 id={id} className="text-4xl font-black text-slate-900 mt-12 mb-6 first:mt-0 scroll-mt-24">
           {children}
@@ -61,8 +53,7 @@ const components: PortableTextComponents = {
       )
     },
     h2: ({ children, value }) => {
-      const text = value?.children?.map((child: any) => child.text).join('') || ''
-      const id = slugify(text)
+      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
       return (
         <h2 id={id} className="text-3xl font-bold text-slate-900 mt-10 mb-5 scroll-mt-24">
           {children}
@@ -70,8 +61,7 @@ const components: PortableTextComponents = {
       )
     },
     h3: ({ children, value }) => {
-      const text = value?.children?.map((child: any) => child.text).join('') || ''
-      const id = slugify(text)
+      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
       return (
         <h3 id={id} className="text-2xl font-bold text-slate-900 mt-8 mb-4 scroll-mt-24">
           {children}
@@ -79,8 +69,7 @@ const components: PortableTextComponents = {
       )
     },
     h4: ({ children, value }) => {
-      const text = value?.children?.map((child: any) => child.text).join('') || ''
-      const id = slugify(text)
+      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
       return (
         <h4 id={id} className="text-xl font-semibold text-slate-900 mt-6 mb-3 scroll-mt-24">
           {children}
@@ -294,10 +283,26 @@ interface PortableTextProps {
   className?: string
 }
 
+
 export default function PortableText({ value, className = '' }: PortableTextProps) {
+  const valueWithIds = useMemo(() => {
+    const counts: Record<string, number> = {}
+    return value?.map((block: any) => {
+      if (block._type === 'block' && ['h1', 'h2', 'h3', 'h4'].includes(block.style)) {
+        const text = block.children?.map((child: any) => child.text).join('') || ''
+        const slug = slugify(text)
+        const count = counts[slug] || 0
+        counts[slug] = count + 1
+        const id = count > 0 ? `${slug}-${count}` : slug
+        return { ...block, id }
+      }
+      return block
+    }) || []
+  }, [value])
+
   return (
     <div className={`prose prose-slate max-w-none ${className}`}>
-      <PortableTextReact value={value} components={components} />
+      <PortableTextReact value={valueWithIds} components={components} />
     </div>
   )
 }
