@@ -107,7 +107,7 @@ export default function ContactSection() {
             <div className="bg-slate-50 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="bg-teal-100 p-4 rounded-xl text-teal-600 hover:bg-teal-200 transition-colors duration-300" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/investallyindia/" target="_blank" rel="noopener noreferrer" className="bg-teal-100 p-4 rounded-xl text-teal-600 hover:bg-teal-200 transition-colors duration-300" aria-label="LinkedIn">
                   <Linkedin className="h-6 w-6" />
                 </a>
                 {/* <a href="#" className="bg-teal-100 p-4 rounded-xl text-teal-600 hover:bg-teal-200 transition-colors duration-300" aria-label="Twitter">
