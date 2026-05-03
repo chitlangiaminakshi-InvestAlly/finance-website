@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#5bdacf",
+              "surface-tint": "#006a63",
+              "surface-container-low": "#f2f4f4",
+              "on-tertiary-fixed-variant": "#00504c",
+              "on-primary-fixed-variant": "#00504b",
+              "tertiary-fixed-dim": "#8ad4cd",
+              "surface-variant": "#e1e3e3",
+              "on-primary-fixed": "#00201d",
+              "tertiary-fixed": "#a6f0e9",
+              "inverse-on-surface": "#eff1f1",
+              "on-surface-variant": "#3c4947",
+              "on-secondary-fixed-variant": "#324b4e",
+              "primary-container": "#00a69c",
+              "on-surface": "#191c1d",
+              "outline-variant": "#bbc9c7",
+              "surface-container": "#eceeee",
+              "inverse-primary": "#5bdacf",
+              "surface-dim": "#d8dada",
+              "tertiary-container": "#57a09a",
+              "tertiary": "#166964",
+              "on-error-container": "#93000a",
+              "secondary": "#496366",
+              "secondary-container": "#cce8eb",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "outline": "#6c7a78",
+              "surface-bright": "#f8fafa",
+              "secondary-fixed": "#cce8eb",
+              "on-tertiary-container": "#003330",
+              "on-primary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface": "#f8fafa",
+              "secondary-fixed-dim": "#b0cbcf",
+              "primary-fixed": "#7af6eb",
+              "on-tertiary-fixed": "#00201e",
+              "on-background": "#191c1d",
+              "surface-container-high": "#e6e8e9",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#003330",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-highest": "#e1e3e3",
+              "primary": "#006a63",
+              "on-secondary-container": "#4f696c",
+              "error-container": "#ffdad6",
+              "background": "#f8fafa",
+              "inverse-surface": "#2e3131",
+              "on-secondary-fixed": "#041f22"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafa;
+        color: #191c1d;
+      }
+      h1, h2, h3 {
+        font-family: 'Manrope', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8fafa] dark:bg-slate-950 backdrop-blur-xl bg-opacity-80 dark:bg-opacity-80 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#191c1d] dark:text-slate-100 font-['Manrope']">
+                Azure Meridian
+            </div>
+<div class="hidden md:flex gap-8 font-['Manrope'] font-semibold tracking-tight">
+<a class="text-[#191c1d] opacity-70 hover:text-[#00a69c] transition-colors duration-300" href="#">Wealth Strategy</a>
+<a class="text-[#006a63] dark:text-[#00a69c] border-b-2 border-[#006a63] dark:border-[#00a69c] pb-1" href="#">Our Team</a>
+<a class="text-[#191c1d] opacity-70 hover:text-[#00a69c] transition-colors duration-300" href="#">Insights</a>
+<a class="text-[#191c1d] opacity-70 hover:text-[#00a69c] transition-colors duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-semibold scale-95 active:scale-90 transition-transform">
+                Client Portal
+            </button>
+</div>
+<div class="bg-[#f2f4f4] dark:bg-slate-900 h-[1px] w-full absolute bottom-0"></div>
+</nav>
+<!-- Hero Section -->
+<header class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+<div class="max-w-3xl">
+<h1 class="text-6xl font-extrabold tracking-tighter text-on-surface leading-tight mb-6">
+                Stewards of Your <span class="text-primary-container">Legacy.</span>
+</h1>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed opacity-80">
+                Meet the minds behind Azure Meridian Wealth Management. A collective of seasoned strategists, visionary founders, and dedicated advisors committed to the preservation and growth of your sovereign wealth.
+            </p>
+</div>
+</header>
+<!-- Section 1: Leadership (Founders) -->
+<section class="px-8 pb-24 max-w-7xl mx-auto">
+<div class="mb-12 flex items-end justify-between">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Executive</span>
+<h2 class="text-4xl font-bold tracking-tight">Leadership</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Founder 1 -->
+<div class="group">
+<div class="aspect-[4/5] overflow-hidden rounded-xl mb-6 relative">
+<img alt="Founder Portrait" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional headshot of a senior executive male in a navy suit, confident expression, soft natural office lighting background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPMK9JweDrRXLpc3tAvb6pRuNbz5_Mrbxe4fB48K9eo3YHMB9vRLH6aum5yZRZ2B7floOIiMdAowHHg4NlQKigERUa-QbCmG2m6EPsX5OQlOYdYhtjGjq5fVwAcgVui9TipvSovJtC1F0nvnTn6JmOHDXRd6A6Z4cfFdwOVaJb4lkKsYxa23BoiQ9cHVrsVf4HgzSvVnsbUlug73o32qUZmRlfqaV2UQ1kv-rh8Fjd6SmLI6wJ3EhHR-5XyIm04y3KYELicjrc99-j"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-1">Julian Thorne</h3>
+<p class="text-primary font-semibold text-sm mb-4 uppercase tracking-wider">Managing Partner &amp; Founder</p>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
+                    With over 25 years in institutional asset management, Julian founded Azure Meridian to provide a boutique, high-touch alternative to traditional private banking.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="work">work</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="mail">mail</span>
+</div>
+</div>
+<!-- Founder 2 -->
+<div class="group">
+<div class="aspect-[4/5] overflow-hidden rounded-xl mb-6 relative">
+<img alt="Founder Portrait" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close-up portrait of a professional female executive, elegant business attire, warm lighting, sophisticated office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfWAli6xSBGFfDcu-9nwC78asOzofm_yYVe51sxjY3ZsRECp4O5GBF3zgGk-c0OHhDPO3qckscuLrNcKVFbHFdxJ007-r4_vQv6-sKe-rw2Gn7xmLRQJzP3OxKzE8NNElXuuqj3KaohfwA6MkAEnlRF7NvLLZtc2x7BZ7rdS_UMepQLL0undarBHZthPo_jSvMW1laegnBrrG9GHGN7zJuFineBGUbYR3NdIc83xR3bIbysUaNeFfjUvpYrx7PP9ktKUje5fCqEHRj"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-1">Dr. Elena Vance</h3>
+<p class="text-primary font-semibold text-sm mb-4 uppercase tracking-wider">Chief Investment Officer</p>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
+                    A PhD in Quantitative Economics, Elena oversees our global investment strategy, specializing in asymmetric risk management and alternative assets.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="insights">insights</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="mail">mail</span>
+</div>
+</div>
+<!-- Founder 3 -->
+<div class="group">
+<div class="aspect-[4/5] overflow-hidden rounded-xl mb-6 relative">
+<img alt="Founder Portrait" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Professional portrait of a male senior partner, relaxed but authoritative stance, minimalist interior design background, neutral tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALSxp0HYGp46F9KjLMyw-_3Bae64yObOC3kh4Y0-kfPRPTWPNmhNy_1GTZwjJgDivur4s8RpeIv2xvD4FiJBxSndG8i4rvAIPLWWrkbtHv9reirDhr8i09i_PukDhLtKCekxKucVpOp7vEkV5EdkMR9UKCAjinERECYhMWYYgEKrmEogVM_9YojDIR93YDxsLNGXUTT_OPHqUqoQMviUUlZ492wP2MvaOIPhgQDpDqjvD7g_y12_oPePAsjTFpfVwp2RgPWGrZ7owF"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-1">Marcus Sterling</h3>
+<p class="text-primary font-semibold text-sm mb-4 uppercase tracking-wider">Director of Private Wealth</p>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
+                    Marcus leads our family office services, bringing a deep expertise in multi-generational estate planning and philanthropic strategy.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="account_balance">account_balance</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary-container transition-colors" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Advisory Board (Consultants) -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-12">
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Specialized Guidance</span>
+<h2 class="text-4xl font-bold tracking-tight">Advisory Board</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Consultant 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex items-start gap-6">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img alt="Consultant" class="w-full h-full object-cover" data-alt="Male finance consultant headshot, blurred city office background, professional attire, modern lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEGY13C5m4o3dV8MqIV9xIesHW-ybLRGYP10lmbq9yRTP86xgVZ35RvClTfcenjjZXJ4gpG8k4b262FwuOvAWDJvu4cwsp_1ND3bOVe3zzlQiySKImfHQnASUyW-7D6fNiYtq9xQ6v9OANkQowXcvFR6cpVsVv66YZ4jMyayaMkQ9hx7zjjad5Zt_r-SJixN1MpiXN4_V-yJDK-YeLdCEIjTBGoyzfQgGu5IG9jL5EkAq2VdNLiwph44uuOxR-_UXF0nzYUzFdKoS2"/>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-1">Simon Kells</h4>
+<p class="text-primary-container text-xs font-semibold uppercase tracking-tighter mb-3">Global Macro Strategist</p>
+<p class="text-on-surface-variant text-xs font-body leading-relaxed">
+                            Former central bank advisor providing deep insights into geopolitical shifts and currency markets.
+                        </p>
+</div>
+</div>
+<!-- Consultant 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex items-start gap-6">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img alt="Consultant" class="w-full h-full object-cover" data-alt="Female legal advisor headshot, sophisticated portrait, minimalist studio lighting, professional presence" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDipM5uxe79yVVaCo2DzFaen2E0jtD64GHLmUZlW9Oiak3_8TSMcObgM3Aw-jMIxGchJy8m3mq5Wi2b1yO6Op25Jao7rtKyZzABEGJkeo21gokWc1krPDJVuCkw59ty-O1mKaqwnJXo42oQpMEzIlw19f_riNSmlCRwpZYObL0GCA_C0pJ_-G60VTzfVX60ykCf9v-frXggmmJs7pMaQPupoqAyjjvVUtjl9PqRiPrL_Yiz7cNz1_cnJsFKNyTJ_ZpeSCLrKeuJYpLz"/>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-1">Beatrice Cho</h4>
+<p class="text-primary-container text-xs font-semibold uppercase tracking-tighter mb-3">Estate &amp; Trust Legal</p>
+<p class="text-on-surface-variant text-xs font-body leading-relaxed">
+                            Specializes in cross-border jurisdictional structures and long-term asset protection frameworks.
+                        </p>
+</div>
+</div>
+<!-- Consultant 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex items-start gap-6">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img alt="Consultant" class="w-full h-full object-cover" data-alt="Male technology consultant portrait, professional but modern, bright airy workspace background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCTA6aaGeDRbTviBUbguh8tIOf0tprVVdeD0cdCcoF9HzhjMlSmqWfrI2vEx54XcBVjJp_EjlSDjcprWi_Zk3XiWkhH-4-VvizcUW2qzch0hUzNgo_7dIVr7zpOVUbVYkwX5ZDLkNwxio8Wcjw7E6PGOprz-U43T3BY4BaYKsxtt9wUjIUcSa_agrCoUXLjbx1BWGEneN1yD9eTinFoGBjuQHZdknZaYZXCfbEIqyS11MAnjybWWnfqtBIMKDM2urG4H-x3HX4AeOc"/>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-1">Arthur Penhaligon</h4>
+<p class="text-primary-container text-xs font-semibold uppercase tracking-tighter mb-3">FinTech Integration</p>
+<p class="text-on-surface-variant text-xs font-body leading-relaxed">
+                            Bridges the gap between digital asset security and traditional custodial excellence.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Our Team (Broader Team) -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<div class="mb-12 text-center">
+<h2 class="text-4xl font-bold tracking-tight mb-4">The Support Engine</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto font-body">The specialists who ensure every detail of your financial strategy is executed with absolute precision.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-y-12 gap-x-16">
+<!-- Team Member 1 -->
+<div class="flex items-center gap-4 border-l-2 border-primary-container/20 pl-6 py-2">
+<div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
+<img alt="Team Member" class="w-full h-full object-cover" data-alt="Close up portrait of a young professional woman, soft lighting, natural bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC55OmdfK_tuS9J02nnCGFIsqd5-sKEP3csmscsksRCjlYEtmZmAOO1fGgFTIWVfCQ3yPNcBFmVpUxAN3bCrCJt6PI0ln6Mps_j5PUqaczFB1kY2Ku3E2E7HGZMeKf98sJaQUr76PzO0AKvxeG-OtTzAqK66rIaI9B9n9XnY-PL4NZMkYb8f01YYKMvUAttNMS8QSSyQMYe8gNeMVDv3yQug4TS3tqDzjHQ_EwWuE136XDDgXj8a38OUkw8vYKAhRqKFU8IGeXHL_ek"/>
+</div>
+<div>
+<h5 class="text-lg font-bold">Sarah Jenkins</h5>
+<p class="text-on-surface-variant text-sm font-body">Relationship Manager</p>
+</div>
+</div>
+<!-- Team Member 2 -->
+<div class="flex items-center gap-4 border-l-2 border-primary-container/20 pl-6 py-2">
+<div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
+<img alt="Team Member" class="w-full h-full object-cover" data-alt="Portrait of a male junior analyst, clean professional look, bright office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIyoH8BmYyf1rOk9lt9n8Hvpq5wlGu1IPPOxb5B5sJXut6vV3rBVh84IdMY0DxnPkUdw_ATBnW3bcLrWBUHxiaUtQTTuEDiprIkzzV43Yy-P0aCOrgqUSfpt-CpJPlOnm1EmaT7PBUkODqufBjiUBh9TAG7-8IleZwEsnJoHw22TjpXuWEjwFvstOnq__fowhLvnknvoX6baynl8E-40eIFZlrDDersDACGRRpL13lKD1Z4d0M5k7wfr1nXpEBgRjBvqdQ1jkMDJnk"/>
+</div>
+<div>
+<h5 class="text-lg font-bold">David Chen</h5>
+<p class="text-on-surface-variant text-sm font-body">Investment Analyst</p>
+</div>
+</div>
+<!-- Team Member 3 -->
+<div class="flex items-center gap-4 border-l-2 border-primary-container/20 pl-6 py-2">
+<div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
+<img alt="Team Member" class="w-full h-full object-cover" data-alt="Professional portrait of a female operations lead, soft focused workspace background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0kA2oaCJ25NEnj7ZRmqHOgtMpc57fsJCEq24RwG7r7YWAWmMkDZGRaHAEhGLsepgXb1ZHC9OuZcwmLbjZIeehpya_y9E6ZCOqC0eBJsIKe4qFTQX2kTDZHRbmJrVfN6e3lEmQCla5yvdjLsPBnQyHmDZvwwuXFGxxwSuem42K6DULIJLHTf8JL9VOP83GtrfyNgqggRtqlxVS8922dAgOL0KuoCrpgRNzn8AMQm70ray8HiUFuXxcd_0z62eUGH45DqIHrcuLQ7jT"/>
+</div>
+<div>
+<h5 class="text-lg font-bold">Isabella Rossi</h5>
+<p class="text-on-surface-variant text-sm font-body">Head of Operations</p>
+</div>
+</div>
+<!-- Team Member 4 -->
+<div class="flex items-center gap-4 border-l-2 border-primary-container/20 pl-6 py-2">
+<div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
+<img alt="Team Member" class="w-full h-full object-cover" data-alt="Male compliance officer portrait, professional studio lighting, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ08ze31zba66xjZrtjPYxlGA0PxWCItPyROZCl3o6lgXCzBQnGTTfPG1R_M3AReO2U-O4MljFjU-8bGbpMWcoL1PW1kZxa3wYTkGEDRvQ1cHgM32nzRb41aKvynk3Jye7UFz6oYiL6Rbcvkz5r_oTq5K_1y9dXik_buVMTbgZhgCWD63ejewD8SvqShPPxwHtDeqcU7gdk1QzdMWQYriOHCMFpEii57IIbC3FEbEvHchhMPiBQi1JLFfhe2eCbGHi6FXuwMAJJFhx"/>
+</div>
+<div>
+<h5 class="text-lg font-bold">Thomas Wright</h5>
+<p class="text-on-surface-variant text-sm font-body">Compliance Officer</p>
+</div>
+</div>
+<!-- Team Member 5 -->
+<div class="flex items-center gap-4 border-l-2 border-primary-container/20 pl-6 py-2">
+<div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
+<img alt="Team Member" class="w-full h-full object-cover" data-alt="Professional female advisor portrait, bright lighting, high-end office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGJLALWBTNQCNwL98jxs-Bf4H9t7jDadmkfpvVsiKW65VLifWbkXhsPWFdLvmJD0k2lCS8pd9gBEd8e64IWa9jhqbYJnMveX45v8yAY11B2-ua7l2EVtDyyuJS-53_oYlhGZRhK-RtOr2-uTI2g5_h0BPOTvLY8Qm7CNyS-Wc1i7uwxf6OfpY1BtWWie6enXgYbF1YclHu8nFV2H_kbj2Tv9kcxssMbvkDYHrdw7CKN_vqFETAliMVA2-pzEPxIJSDKocucJONL5M5"/>
+</div>
+<div>
+<h5 class="text-lg font-bold">Maya Patel</h5>
+<p class="text-on-surface-variant text-sm font-body">Portfolio Specialist</p>
+</div>
+</div>
+<!-- Team Member 6 -->
+<div class="flex items-center gap-4 border-l-2 border-primary-container/20 pl-6 py-2">
+<div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
+<img alt="Team Member" class="w-full h-full object-cover" data-alt="Male financial planner portrait, professional and friendly expression, modern office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPpjxIXw7gz0Gh3LycSK4GT9N38eef5i0in5VEXXzJKrpXaC7F4pdY-LDP2KCfqgx0-Ccbg5YhiO77UDyKYM3LzQ2pmw1AfKRDUBy0eGcrU5Tl2RgRXczPQ_Cs7CvLRx-ol1HcCBaOPriyXWVchAZD4WLQdTjV0fzBZqx0HwTknNLyfGA6vbhFvYFWMShJcId4QvQ4hJrZetSZgvGyNGTj39-GO5gUApQB9ViOHs8AV_83hDsjctx2JGzED8Jq5vJAsenPvilPsiz3"/>
+</div>
+<div>
+<h5 class="text-lg font-bold">Liam O'Connell</h5>
+<p class="text-on-surface-variant text-sm font-body">Financial Planner</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#f2f4f4] dark:bg-slate-900 w-full py-16 px-8 mt-20">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div>
+<h6 class="font-['Manrope'] font-bold text-[#191c1d] dark:text-slate-100 mb-6">Azure Meridian</h6>
+<p class="font-['Inter'] text-sm leading-relaxed text-[#191c1d] opacity-60 dark:text-slate-400">
+                    Bespoke wealth management for the modern sovereign. Authority meets precision.
+                </p>
+</div>
+<div>
+<h6 class="text-[#006a63] font-medium text-sm mb-6">Services</h6>
+<ul class="space-y-4 font-['Inter'] text-sm">
+<li><a class="text-[#191c1d] opacity-60 dark:text-slate-400 hover:opacity-100 hover:text-[#00a69c] transition-all" href="#">Wealth Strategy</a></li>
+<li><a class="text-[#191c1d] opacity-60 dark:text-slate-400 hover:opacity-100 hover:text-[#00a69c] transition-all" href="#">Risk Architecture</a></li>
+<li><a class="text-[#191c1d] opacity-60 dark:text-slate-400 hover:opacity-100 hover:text-[#00a69c] transition-all" href="#">Legacy Planning</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-[#006a63] font-medium text-sm mb-6">Company</h6>
+<ul class="space-y-4 font-['Inter'] text-sm">
+<li><a class="text-[#006a63] font-medium" href="#">Our Team</a></li>
+<li><a class="text-[#191c1d] opacity-60 dark:text-slate-400 hover:opacity-100 hover:text-[#00a69c] transition-all" href="#">Insights</a></li>
+<li><a class="text-[#191c1d] opacity-60 dark:text-slate-400 hover:opacity-100 hover:text-[#00a69c] transition-all" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-[#006a63] font-medium text-sm mb-6">Legal</h6>
+<ul class="space-y-4 font-['Inter'] text-sm">
+<li><a class="text-[#191c1d] opacity-60 dark:text-slate-400 hover:opacity-100 hover:text-[#00a69c] transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-[#191c1d] opacity-60 dark:text-slate-400 hover:opacity-100 hover:text-[#00a69c] transition-all" href="#">Disclosures</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto pt-16 mt-16 border-t border-outline-variant/10 text-center">
+<p class="font-['Inter'] text-sm leading-relaxed text-[#191c1d] opacity-60 dark:text-slate-400">
+                © 2024 Azure Meridian Wealth Management. All rights reserved. Member FINRA/SIPC.
+            </p>
+</div>
+</footer>
+</body></html>

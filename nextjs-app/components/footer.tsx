@@ -56,8 +56,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
-                  Services
+                <Link href="/solutions" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                  Solutions
                 </Link>
               </li>
               <li>
@@ -68,27 +68,27 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Solutions */}
           <div>
-            <h3 className="text-lg font-bold mb-4">Services</h3>
+            <h3 className="text-lg font-bold mb-4">Solutions</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/solutions#wealth" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Portfolio Management
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/solutions#insurance" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Insurance Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/solutions#loans" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Home Loans
                 </Link>
               </li>
               <li>
-                <Link href="/#services" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
+                <Link href="/solutions#wealth" className="text-slate-400 hover:text-teal-500 transition-colors duration-300">
                   Mutual Funds
                 </Link>
               </li>

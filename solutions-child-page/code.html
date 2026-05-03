@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detailed Solutions | Azure Meridian Wealth</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface": "#f8fafa",
+                        "on-surface-variant": "#3c4947",
+                        "on-secondary-fixed-variant": "#324b4e",
+                        "inverse-surface": "#2e3131",
+                        "on-tertiary-fixed": "#00201e",
+                        "primary-container": "#00a69c",
+                        "tertiary": "#166964",
+                        "surface-container-highest": "#e1e3e3",
+                        "surface-bright": "#f8fafa",
+                        "on-primary-fixed": "#00201d",
+                        "outline": "#6c7a78",
+                        "secondary-container": "#cce8eb",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "on-primary-fixed-variant": "#00504b",
+                        "background": "#f8fafa",
+                        "on-secondary-container": "#4f696c",
+                        "secondary": "#496366",
+                        "surface-container-high": "#e6e8e9",
+                        "tertiary-fixed-dim": "#8ad4cd",
+                        "primary": "#006a63",
+                        "secondary-fixed-dim": "#b0cbcf",
+                        "surface-tint": "#006a63",
+                        "outline-variant": "#bbc9c7",
+                        "on-tertiary-fixed-variant": "#00504c",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#041f22",
+                        "tertiary-container": "#57a09a",
+                        "surface-variant": "#e1e3e3",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#a6f0e9",
+                        "secondary-fixed": "#cce8eb",
+                        "surface-container": "#eceeee",
+                        "surface-container-low": "#f2f4f4",
+                        "inverse-primary": "#5bdacf",
+                        "primary-fixed-dim": "#5bdacf",
+                        "on-surface": "#191c1d",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#7af6eb",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#003330",
+                        "inverse-on-surface": "#eff1f1",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d8dada",
+                        "on-primary-container": "#003330",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #006a63 0%, #00a69c 100%);
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-background selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav bg-[#f8fafa] bg-opacity-80 shadow-sm border-b border-[#f2f4f4]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#191c1d] font-headline">Azure Meridian Wealth</div>
+<div class="hidden md:flex items-center gap-8 font-headline font-semibold tracking-tight text-sm">
+<a class="text-[#191c1d] opacity-80 hover:text-[#00a69c] transition-colors duration-300" href="#">Wealth Planning</a>
+<a class="text-[#191c1d] opacity-80 hover:text-[#00a69c] transition-colors duration-300" href="#">Asset Management</a>
+<a class="text-[#191c1d] opacity-80 hover:text-[#00a69c] transition-colors duration-300" href="#">Private Banking</a>
+<a class="text-[#006a63] border-b-2 border-[#006a63] pb-1" href="#">Advisory</a>
+<a class="text-[#191c1d] opacity-80 hover:text-[#00a69c] transition-colors duration-300" href="#">Insights</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#006a63] font-semibold text-sm px-4 py-2 hover:bg-surface-container-high rounded-lg transition-all">Contact Advisor</button>
+<button class="signature-gradient text-on-primary px-6 py-2.5 rounded-lg font-headline font-bold text-sm shadow-sm active:scale-95 transition-transform">Client Portal</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="max-w-screen-2xl mx-auto px-8 py-20 flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1 space-y-8">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-semibold uppercase tracking-widest">
+                Expert Solutions
+            </div>
+<h1 class="font-headline font-extrabold text-5xl lg:text-7xl text-on-background leading-[1.1] tracking-tight">
+                Comprehensive <br/>
+<span class="text-primary-container">Financial Frameworks</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-xl leading-relaxed">
+                At Azure Meridian, we transcend traditional asset management. Our frameworks are engineered for the sovereign investor, balancing multi-generational wealth preservation with aggressive growth strategies.
+            </p>
+<div class="flex gap-4">
+<button class="signature-gradient text-on-primary px-8 py-4 rounded-lg font-headline font-bold text-base flex items-center gap-2 group">
+                    Begin Your Journey
+                    <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex-1 relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Modern architectural glass building reflecting a clear blue sky, symbolizing corporate stability and wealth management excellence" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDigmrJV2GIwQNXPozQA-_OjeuTrrBrsWPmiIbuOC_hUHnLFfIv8alOyJG2XLNLEFirfS0rVcu6Ae21fE5f49WOOMt0Z5SKrCCb7Od2aD9XsIcvjQkuuwNFqLAmtARTI2oPNb39Scck_aR8Sp9_XwfvBpByapnUn3nf2gkrl2VeeAH4P2NWTJWDdCmn840Da7d5czcvAv-YDo9Rlj-4ZDq6qPp60eRYRL2jzRk3LNzuyqE35ZqtOaJ-S4gQbUbxLGpoP3FOKHsS1Em"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+</section>
+<!-- Wealth Building Section -->
+<section class="bg-surface py-24">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="mb-12">
+<h2 class="font-headline font-bold text-4xl text-on-background mb-4">Wealth Building</h2>
+<div class="w-20 h-1.5 signature-gradient rounded-full"></div>
+</div>
+<div class="grid grid-cols-6 gap-8">
+<!-- Mutual Funds -->
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/20 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">insights</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Mutual Funds</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Curated selection of high-performance domestic and international funds aligned with your risk appetite.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Equity &amp; Debt Mix</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Automated Rebalancing</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Tax-Efficient Structures</li>
+</ul>
+</div>
+<!-- Portfolio Management -->
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/20 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance_wallet</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Portfolio Management</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Discretionary and non-discretionary services designed for bespoke investment philosophies.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Direct Stock Execution</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Active Risk Monitoring</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Direct Fund Access</li>
+</ul>
+</div>
+<!-- AIF & PMS -->
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/20 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">currency_exchange</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">AIF &amp; PMS</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Exclusive access to Alternative Investment Funds and professional Portfolio Management Schemes.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Venture Capital Access</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Private Equity Participation</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Hedged Strategies</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Insurance & Protection Section -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="mb-12">
+<h2 class="font-headline font-bold text-4xl text-on-background mb-4">Insurance &amp; Protection</h2>
+<div class="w-20 h-1.5 signature-gradient rounded-full"></div>
+</div>
+<div class="grid grid-cols-6 gap-8">
+<!-- Term Insurance -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">shield_with_heart</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Term Insurance</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">High-value life coverage with flexible premiums and global claim support for your family's future security.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Pure Risk Coverage</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Estate Liquidity</li>
+</ul>
+</div>
+<!-- Health Insurance -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">medical_services</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Health Insurance</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Global medical assistance and top-tier healthcare access for you and your dependents without financial strain.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Worldwide Coverage</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> No-Claim Bonus</li>
+</ul>
+</div>
+<!-- Critical Illness -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">ecg_heart</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Critical Illness</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Comprehensive lump-sum payouts upon diagnosis to cover specialized treatment and lifestyle adjustments.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Multi-Stage Coverage</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Income Replacement</li>
+</ul>
+</div>
+<!-- Family Office Protection -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">family_restroom</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Family Office Protection</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Advanced risk mitigation strategies for high-net-worth families, protecting assets across jurisdictions.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Succession Planning</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Asset Shielding</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Loans & Financing Section -->
+<section class="bg-surface py-24">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="mb-12">
+<h2 class="font-headline font-bold text-4xl text-on-background mb-4">Loans &amp; Financing</h2>
+<div class="w-20 h-1.5 signature-gradient rounded-full"></div>
+</div>
+<div class="grid grid-cols-6 gap-8">
+<!-- Home Loans -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">home_work</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Home Loans</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Financing for luxury residences, vacation homes, and premium real estate investments with competitive rates.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> High-Value Disbursement</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Tenure up to 30 years</li>
+</ul>
+</div>
+<!-- Business Loans -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">business_center</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Business Loans</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Customized capital solutions for expansion, working capital, and specialized equipment financing.</p>
+<ul class="space-y-4 font-body text-sm text-on-background">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Quick Approval Workflow</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span> Minimal Collateral Paths</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Expert Advisory Section -->
+<section class="bg-[#f0f7f7] py-24">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="mb-12">
+<h2 class="font-headline font-bold text-4xl text-on-background mb-4">Expert Advisory</h2>
+<div class="w-20 h-1.5 signature-gradient rounded-full"></div>
+</div>
+<div class="grid grid-cols-6 gap-8">
+<!-- Tax Consultancy -->
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">receipt_long</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Tax Consultancy</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Optimizing your tax liabilities through legal structures and cross-border planning.</p>
+<div class="h-1 w-full bg-surface-container rounded-full mb-2"><div class="h-1 w-3/4 signature-gradient rounded-full"></div></div>
+<p class="text-xs text-on-surface-variant/70 font-label uppercase tracking-wider">Optimized Efficiency</p>
+</div>
+<!-- Financial Planning -->
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">event_note</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Financial Planning</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Holistic mapping of life goals against cash flows and projected market returns.</p>
+<div class="h-1 w-full bg-surface-container rounded-full mb-2"><div class="h-1 w-1/2 signature-gradient rounded-full"></div></div>
+<p class="text-xs text-on-surface-variant/70 font-label uppercase tracking-wider">Strategic Roadmap</p>
+</div>
+<!-- Portfolio Review -->
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">analytics</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Portfolio Review</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Periodic deep-dives into asset performance and structural health of your holdings.</p>
+<div class="h-1 w-full bg-surface-container rounded-full mb-2"><div class="h-1 w-4/5 signature-gradient rounded-full"></div></div>
+<p class="text-xs text-on-surface-variant/70 font-label uppercase tracking-wider">Performance Audit</p>
+</div>
+<!-- Estate Planning -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">history_edu</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Estate Planning</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Securing your legacy through trusts, wills, and succession structures that prevent litigation and ensure smooth transition.</p>
+</div>
+<button class="text-primary font-bold inline-flex items-center gap-2 hover:underline text-sm mt-4">Download Framework <span class="material-symbols-outlined text-base">download</span></button>
+</div>
+<!-- Global Advisory -->
+<div class="col-span-6 md:col-span-3 bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/10 transition-shadow hover:shadow-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+<h3 class="font-headline font-bold text-2xl text-on-background">Global Advisory</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Access to international markets, foreign currency management, and residency planning for the global citizen.</p>
+</div>
+<button class="text-primary font-bold inline-flex items-center gap-2 hover:underline text-sm mt-4">Explore Jurisdictions <span class="material-symbols-outlined text-base">explore</span></button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low w-full rounded-t-3xl border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-12 py-16 grid gap-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="font-headline font-bold text-2xl text-[#191c1d]">Azure Meridian Wealth</div>
+<div class="flex flex-wrap gap-6 font-['Inter'] text-xs text-[#191c1d] opacity-60">
+<a class="hover:text-[#006a63] underline-offset-4 hover:underline transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-[#006a63] underline-offset-4 hover:underline transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-[#006a63] underline-offset-4 hover:underline transition-colors" href="#">Regulatory Disclosures</a>
+<a class="hover:text-[#006a63] underline-offset-4 hover:underline transition-colors" href="#">Form ADV</a>
+<a class="hover:text-[#006a63] underline-offset-4 hover:underline transition-colors" href="#">Security</a>
+<a class="hover:text-[#006a63] underline-offset-4 hover:underline transition-colors" href="#">Cookie Settings</a>
+</div>
+</div>
+<div class="bg-outline-variant/20 h-[1px] w-full"></div>
+<div class="text-[#191c1d] opacity-60 text-xs leading-relaxed max-w-3xl">
+            © 2024 Azure Meridian Wealth Management. Member FINRA/SIPC. High-net-worth advisory services provided through Azure Meridian Global. Investment products are not FDIC insured, are not bank guaranteed, and may lose value.
+        </div>
+</div>
+</footer>
+</body></html>

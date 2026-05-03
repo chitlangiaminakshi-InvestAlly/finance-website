@@ -1,139 +1,258 @@
-# Investally - Financial Services Website
+# InvestAlly Next.js App
 
-A modern, responsive financial services website built with Next.js 16, TypeScript, Tailwind CSS, and shadcn-ui.
+Production website for InvestAlly, built with Next.js App Router, TypeScript, Tailwind CSS v4, and Sanity CMS.
 
-## Features
+This app powers the public marketing site, the blog, and supporting lead-generation flows. It is designed for a content-first financial services website with strong SEO, static blog generation, lightweight interactions, and optional blog-only mode for focused content campaigns.
 
-- **Modern Tech Stack**: Built with Next.js 16 App Router, TypeScript, and Tailwind CSS
-- **Beautiful UI Components**: Leveraging shadcn-ui for polished, accessible components
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Gradient Animations**: Eye-catching animated gradient backgrounds
-- **Interactive Navigation**: Dropdown menus and mobile-responsive navigation
-- **SEO Optimized**: Proper metadata and semantic HTML structure
+## Overview
 
-## Sections Included
+The application lives in `nextjs-app/` inside the broader `finance-website` workspace. It is the customer-facing frontend and integrates with a separate `sanity-studio/` project for blog and content management.
 
-1. **Navigation Header**
-   - Logo and brand
-   - Desktop navigation with dropdown menu for products
-   - Mobile-responsive hamburger menu
-   - "Get Started" CTA button
+Key responsibilities:
 
-2. **Hero Section**
-   - Large animated gradient background
-   - Compelling headline and subheadline
-   - Two CTA buttons
-   - Quick stats display (AUM, Clients, Experience)
-   - Decorative elements
+- Render the main marketing website and brand pages
+- Fetch and render blog content from Sanity
+- Generate SEO metadata, sitemap, robots rules, and structured data
+- Support social sharing and blog like counts
+- Redirect the site into a blog-only experience when required
 
-3. **Market Tickers**
-   - Live market indicators for NIFTY 50, SENSEX, and GOLD
-   - Color-coded trending indicators
+## Tech Stack
 
-4. **About Section**
-   - Company overview
-   - Four key features with icons
-   - Client satisfaction stat highlight
+- Next.js 16 with App Router
+- React 19
+- TypeScript 5
+- Tailwind CSS 4
+- shadcn/ui primitives built on Radix UI
+- Sanity via `next-sanity`
+- `next-sitemap` for sitemap and robots generation
 
-5. **Products Section**
-   - Three main product cards:
-     - Portfolio Management
-     - Insurance Solutions
-     - Home & Personal Loans
-   - Four additional service highlights
-   - Hover animations on cards
+## Main Features
 
-6. **Footer**
-   - Brand information
-   - Contact details
-   - Quick links
-   - Services list
+- Marketing pages for home, about, services, solutions, and calculators
+- Sanity-backed blog listing and dynamic blog post pages
+- Static generation for blog slugs through `generateStaticParams`
+- Portable rich text rendering for blog content
+- Like API for blog posts using a server-side Sanity write token
+- Table of contents, sharing, and copy attribution for articles
+- JSON-LD structured data for search engines
+- Google Analytics integration
+- WhatsApp floating CTA
+- Optional blog-only mode controlled by environment variable and edge proxy logic
+
+## Routes
+
+Current route surface:
+
+- `/` - homepage
+- `/about-us` - about page
+- `/services` - services page
+- `/solutions` - solutions overview
+- `/calculators` - calculators page
+- `/blog` - blog listing
+- `/blog/[slug]` - blog detail page
+- `/api/blog/like` - increments a blog post like count in Sanity
+
+## Project Structure
+
+```text
+nextjs-app/
+├── app/
+│   ├── layout.tsx              # Root layout, metadata, analytics, JSON-LD
+│   ├── page.tsx                # Homepage, redirects to /blog in blog-only mode
+│   ├── about-us/
+│   ├── services/
+│   ├── solutions/
+│   ├── calculators/
+│   ├── blog/
+│   │   ├── page.tsx            # Blog listing
+│   │   └── [slug]/page.tsx     # Blog article page
+│   └── api/blog/like/route.ts  # Like endpoint
+├── components/
+│   ├── sections/               # Homepage and page sections
+│   ├── ui/                     # Reusable UI primitives
+│   └── *.tsx                   # Navigation, footer, blog helpers, widgets
+├── hooks/                      # Viewport and responsive hooks
+├── lib/
+│   ├── sanity.api.ts           # App-facing data functions
+│   ├── sanity.client.ts        # Read and write clients
+│   ├── sanity.config.ts        # Shared Sanity configuration
+│   ├── sanity.image.ts         # Image URL helpers
+│   ├── sanity.queries.ts       # GROQ queries
+│   └── sanity.types.ts         # Blog and CMS types
+├── public/                     # Static assets, logos, generated sitemap/robots
+├── private/                    # Internal notes, audits, source assets, archive
+├── next.config.ts              # Next.js config and image allowlist
+├── next-sitemap.config.js      # Sitemap and robots generation
+├── proxy.ts                    # Blog-only redirection logic
+└── .env.example                # Public Sanity env template
+```
 
 ## Getting Started
 
-### Development Server
+### Prerequisites
 
-To start the development server:
+- Node.js 20 or later recommended
+- npm
+- A Sanity project with the required schemas
+
+### Install
+
+From the `nextjs-app` directory:
+
+```bash
+npm install
+```
+
+### Run locally
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-### Build for Production
+### Production build
 
 ```bash
 npm run build
 npm start
 ```
 
-## Project Structure
+`postbuild` automatically runs `next-sitemap`, so the sitemap and robots output stay aligned with the deployed route set.
 
-```
-nextjs-app/
-├── app/
-│   ├── layout.tsx          # Root layout with Inter font
-│   ├── page.tsx            # Home page
-│   └── globals.css         # Global styles and custom utilities
-├── components/
-│   ├── ui/                 # shadcn-ui components
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   └── dropdown-menu.tsx
-│   ├── sections/           # Page sections
-│   │   ├── hero-section.tsx
-│   │   ├── market-tickers.tsx
-│   │   ├── about-section.tsx
-│   │   └── products-section.tsx
-│   ├── navigation.tsx      # Header navigation
-│   └── footer.tsx          # Footer component
-└── package.json
+## Environment Variables
+
+Create `nextjs-app/.env.local` and populate the required values.
+
+### Required for Sanity content
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
 ```
 
-## Technologies Used
+### Optional but important
 
-- **Next.js 16**: React framework with App Router
-- **TypeScript**: Type-safe development
-- **Tailwind CSS v4**: Utility-first CSS framework
-- **shadcn-ui**: Beautiful, accessible component library
-- **Lucide React**: Icon library (replacement for Feather Icons)
-- **Inter Font**: Google font for clean typography
+```env
+SANITY_API_WRITE_TOKEN=your_editor_token
+SITE_URL=https://investally.co.in
+NEXT_PUBLIC_BLOG_ONLY_MODE=false
+```
 
-## Custom Styles
+### Variable reference
 
-Custom utilities added in `globals.css`:
-- `.gradient-text` - Gradient text effect
-- `.gradient-bg` - Animated gradient background
-- `.card-hover` - Smooth hover animations for cards
+- `NEXT_PUBLIC_SANITY_PROJECT_ID`
+  Sanity project ID used by the frontend client.
 
-## Color Scheme
+- `NEXT_PUBLIC_SANITY_DATASET`
+  Sanity dataset, typically `production`.
 
-Primary colors from the original design:
-- Teal: `#0d9488`, `#14b8a6`
-- Supporting colors: Green, Blue, Purple, Orange for different services
+- `NEXT_PUBLIC_SANITY_API_VERSION`
+  Sanity API version used by queries.
 
-## Next Steps
+- `SANITY_API_WRITE_TOKEN`
+  Server-side token used by `/api/blog/like` to increment like counts.
+  This should have editor-level write access and must not be exposed client-side.
 
-To extend this website, consider adding:
-- Calculators page (SIP, EMI, etc.)
-- Team section with member profiles
-- Blog page with articles
-- Contact form with backend integration
-- Testimonials section
-- More detailed product pages
-- Authentication for user dashboard
-- Real-time market data integration
+- `SITE_URL`
+  Canonical base URL used by sitemap generation. Defaults to `https://investally.co.in` if omitted.
 
-## Learn More
+- `NEXT_PUBLIC_BLOG_ONLY_MODE`
+  When set to `true`, the homepage redirects to `/blog` and most non-blog requests are redirected there by `proxy.ts`.
 
-To learn more about the technologies used:
+## Sanity Integration
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS](https://tailwindcss.com/docs)
-- [shadcn-ui](https://ui.shadcn.com/)
-- [TypeScript](https://www.typescriptlang.org/)
+The blog content layer is driven by Sanity and consumed through `next-sanity`.
 
-## License
+Read flow:
 
-All rights reserved © 2025 Investally
+- Shared settings are defined in `lib/sanity.config.ts`
+- Read client is created in `lib/sanity.client.ts`
+- GROQ queries live in `lib/sanity.queries.ts`
+- App-facing fetch helpers live in `lib/sanity.api.ts`
+
+Write flow:
+
+- `writeClient` in `lib/sanity.client.ts` uses `SANITY_API_WRITE_TOKEN`
+- `/api/blog/like` patches the target post and increments `likeCount`
+
+Caching:
+
+- Blog fetches use Next data cache with `revalidate: 3600`
+- Tagged fetches are already structured for future cache invalidation improvements
+
+## Blog-Only Mode
+
+This project includes a content-campaign mode where the site behaves like a blog-first property.
+
+When `NEXT_PUBLIC_BLOG_ONLY_MODE=true`:
+
+- `/` redirects to `/blog`
+- Non-blog application routes are redirected to `/blog` through `proxy.ts`
+- Static assets, Next internals, and API routes continue to work
+- The WhatsApp floating button is hidden
+
+This is useful when you want a simplified acquisition funnel centered on articles instead of the full marketing site.
+
+## SEO and Analytics
+
+SEO-related behavior already included in the app:
+
+- Global metadata and Open Graph tags in `app/layout.tsx`
+- JSON-LD structured data for `FinancialService`
+- `next-sitemap` generated sitemap and robots configuration
+- Canonical metadata base set to `https://investally.co.in`
+- Google site verification file and metadata
+- Google Analytics script integration in the root layout
+
+## Image and Asset Handling
+
+Allowed remote image hosts are configured in `next.config.ts`:
+
+- `cdn.sanity.io`
+- `lh3.googleusercontent.com`
+- `images.unsplash.com`
+
+Sanity article images are resolved through the helper in `lib/sanity.image.ts`.
+
+## Available Scripts
+
+- `npm run dev` - start local development server
+- `npm run build` - create production build
+- `npm run start` - run the production server
+- `npm run lint` - run ESLint
+
+## Deployment Notes
+
+- Set all environment variables in the hosting platform before building
+- Ensure `SITE_URL` matches the final production domain for sitemap correctness
+- Keep `SANITY_API_WRITE_TOKEN` server-only
+- Run the separate `sanity-studio/` project for editorial management
+- If blog content appears empty locally, verify Sanity credentials first
+
+## Common Setup Issue
+
+### Blog likes are failing
+
+The like endpoint requires a Sanity write token.
+
+1. Create an API token in the Sanity project with editor permissions.
+2. Add it to `nextjs-app/.env.local` as:
+
+```env
+SANITY_API_WRITE_TOKEN=your_token_here
+```
+
+3. Restart the dev server.
+
+Without this token, the site can still read blog content, but the like API will fail.
+
+## Related Workspace
+
+This repository also contains:
+
+- `sanity-studio/` - Sanity Studio used to manage content
+- design and archive folders used during website iteration and content planning
+
+If you are onboarding to the full project, start the frontend here and keep the studio available whenever blog schema or content updates are needed.

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ArrowLeft, TrendingUp, Shield, Home, Check, ArrowRight, FileText, BookOpen, PieChart, Heart, DollarSign, CreditCard, Calculator, Filter } from "lucide-react";
+import { ArrowLeft, TrendingUp, Shield, Home, Check, ArrowRight, FileText, BookOpen, PieChart, Heart, DollarSign, CreditCard, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import FamilyOfficeSection from "@/components/sections/family-office-section";
 
 export const metadata = {
   title: "Our Services - Investally | Comprehensive Financial Solutions",
@@ -180,7 +181,7 @@ export default function ServicesPage() {
                 </div>
 
                 <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-                  True financial planning isn't complete without adequate protection. We help you secure your family's future with the right insurance coverage—ensuring you're protected for real risks, not oversold on unnecessary policies.
+                  True financial planning isn&apos;t complete without adequate protection. We help you secure your family&apos;s future with the right insurance coverage—ensuring you&apos;re protected for real risks, not oversold on unnecessary policies.
                 </p>
 
                 {/* Disclaimer */}
@@ -200,7 +201,7 @@ export default function ServicesPage() {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-slate-900 mb-2">Insurance Advisory</h3>
-                        <p className="text-slate-700 mb-4">Your protection matters more than our commission. We decode complex policies, ensuring you're covered for real risks—not oversold. From selection to claims, we're your advocate, making insurance work for you.</p>
+                        <p className="text-slate-700 mb-4">Your protection matters more than our commission. We decode complex policies, ensuring you&apos;re covered for real risks-not oversold. From selection to claims, we&apos;re your advocate, making insurance work for you.</p>
                         <ul className="space-y-2">
                           <li className="flex items-center text-slate-600">
                             <Check className="text-green-600 h-5 w-5 mr-2 flex-shrink-0" />
@@ -251,7 +252,7 @@ export default function ServicesPage() {
                         <Check className="text-green-600 h-5 w-5 mr-2" />
                         <h4 className="font-bold text-slate-900">Child & Family Plans</h4>
                       </div>
-                      <p className="text-sm text-slate-600">Secure your children's future</p>
+                      <p className="text-sm text-slate-600">Secure your children&apos;s future</p>
                     </div>
                   </div>
                 </div>
@@ -283,7 +284,7 @@ export default function ServicesPage() {
                 </div>
 
                 <p className="text-lg text-slate-700 mb-8 leading-relaxed">
-                  Whether you're buying your dream home, expanding your business, or need personal financing, we help you secure the best loan options with competitive rates and quick approvals.
+                  Whether you&apos;re buying your dream home, expanding your business, or need personal financing, we help you secure the best loan options with competitive rates and quick approvals.
                 </p>
 
                 {/* Services Grid */}
@@ -296,7 +297,7 @@ export default function ServicesPage() {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-slate-900 mb-2">Loan Solutions</h3>
-                        <p className="text-slate-700 mb-4">Whether you're buying your dream home or fueling business growth, we secure the best rates and fastest approvals. Our network and expertise turn loan applications from headaches into stepping stones.</p>
+                        <p className="text-slate-700 mb-4">Whether you&apos;re buying your dream home or fueling business growth, we secure the best rates and fastest approvals. Our network and expertise turn loan applications from headaches into stepping stones.</p>
                         <ul className="space-y-2">
                           <li className="flex items-center text-slate-600">
                             <Check className="text-blue-600 h-5 w-5 mr-2 flex-shrink-0" />
@@ -400,7 +401,7 @@ export default function ServicesPage() {
             {/* Closing Statement */}
             <div className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl p-8 md:p-12 text-white text-center">
               <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Transform Your Financial Future?</h2>
-              <p className="text-xl text-teal-50 mb-8 max-w-2xl mx-auto">At InvestAlly, your financial success is our only agenda. Let's start building your wealth together.</p>
+              <p className="text-xl text-teal-50 mb-8 max-w-2xl mx-auto">At InvestAlly, your financial success is our only agenda. Let&apos;s start building your wealth together.</p>
               <Button asChild size="lg" className="bg-white text-teal-600 hover:bg-teal-50 font-black text-lg rounded-lg shadow-lg">
                 <Link href="/#contact" className="inline-flex items-center">
                   Book Free Consultation
@@ -468,6 +469,7 @@ export default function ServicesPage() {
         </div>
       </div>
     </div>
+    <FamilyOfficeSection />
     <Footer />
   </>
   );

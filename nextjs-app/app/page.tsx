@@ -7,17 +7,18 @@ export const metadata: Metadata = {
 
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/sections/hero-section";
-import MarketTickers from "@/components/sections/market-tickers";
-import AboutSection from "@/components/sections/about-section";
-import ProductsSection from "@/components/sections/products-section";
-import CalculatorsSection from "@/components/sections/calculators-section";
-import TeamSection from "@/components/sections/team-section";
-import BlogSection from "@/components/sections/blog-section";
-import TestimonialsSection from "@/components/sections/testimonials-section";
-import CTASection from "@/components/sections/cta-section";
-import ContactSection from "@/components/sections/contact-section";
-import Footer from "@/components/footer";
-import QuotePopup from "@/components/quote-popup";
+import dynamic from "next/dynamic";
+import ScrollReveal from "@/components/scroll-reveal";
+
+const AboutSection = dynamic(() => import("@/components/sections/about-section"));
+const SolutionsSection = dynamic(() => import("@/components/sections/solutions-section"));
+const UserJourneySection = dynamic(() => import("@/components/sections/user-journey-section"));
+const TeamSection = dynamic(() => import("@/components/sections/team-section"));
+const TestimonialsSection = dynamic(() => import("@/components/sections/testimonials-section"));
+const FAQSection = dynamic(() => import("@/components/sections/faq-section"));
+const ContactSection = dynamic(() => import("@/components/sections/contact-section"));
+const Footer = dynamic(() => import("@/components/footer"));
+const QuotePopup = dynamic(() => import("@/components/quote-popup"));
 
 export default function Home() {
   // Check if blog-only mode is enabled
@@ -33,17 +34,16 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
-        <MarketTickers />
-        <AboutSection />
-        <ProductsSection />
-        <CalculatorsSection />
-        <TeamSection />
-        <BlogSection />
-        <TestimonialsSection />
-        <CTASection />
-        <ContactSection />
+        <ScrollReveal><AboutSection /></ScrollReveal>
+        <ScrollReveal><SolutionsSection /></ScrollReveal>
+        <ScrollReveal><UserJourneySection /></ScrollReveal>
+
+        <ScrollReveal><TeamSection /></ScrollReveal>
+        <ScrollReveal><TestimonialsSection /></ScrollReveal>
+        <ScrollReveal><FAQSection /></ScrollReveal>
+        <ScrollReveal><ContactSection /></ScrollReveal>
       </main>
-      <Footer />
+      <ScrollReveal><Footer /></ScrollReveal>
       <QuotePopup />
     </>
   );

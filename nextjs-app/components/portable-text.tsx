@@ -4,6 +4,36 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { urlForImage } from '@/lib/sanity.image'
 import { slugify } from '@/lib/utils'
+import type {
+  GifEmbed,
+  PortableTextBlock,
+  PortableTextSpan,
+  SanityReferenceAsset,
+  VideoEmbed,
+} from '@/lib/sanity.types'
+
+interface PortableTextHeadingBlock extends PortableTextBlock {
+  id?: string
+  children?: PortableTextSpan[]
+}
+
+interface PortableTextImageValue {
+  asset?: SanityReferenceAsset
+  alt?: string
+}
+
+type PortableTextVideoValue = VideoEmbed
+
+type PortableTextGifValue = GifEmbed
+
+interface PortableTextTableRow {
+  _key?: string
+  cells: string[]
+}
+
+interface PortableTextTableValue {
+  rows?: PortableTextTableRow[]
+}
 
 // Helper function to extract video ID and generate embed URL
 function getVideoEmbedUrl(videoUrl: string, videoType: string): string | null {
@@ -45,7 +75,8 @@ const components: PortableTextComponents = {
   },
   block: {
     h1: ({ children, value }) => {
-      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
+      const headingValue = value as PortableTextHeadingBlock
+      const id = headingValue.id || slugify(headingValue.children?.map((child) => child.text || '').join('') || '')
       return (
         <h1 id={id} className="text-4xl font-black text-slate-900 mt-12 mb-6 first:mt-0 scroll-mt-24">
           {children}
@@ -53,7 +84,8 @@ const components: PortableTextComponents = {
       )
     },
     h2: ({ children, value }) => {
-      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
+      const headingValue = value as PortableTextHeadingBlock
+      const id = headingValue.id || slugify(headingValue.children?.map((child) => child.text || '').join('') || '')
       return (
         <h2 id={id} className="text-3xl font-bold text-slate-900 mt-10 mb-5 scroll-mt-24">
           {children}
@@ -61,7 +93,8 @@ const components: PortableTextComponents = {
       )
     },
     h3: ({ children, value }) => {
-      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
+      const headingValue = value as PortableTextHeadingBlock
+      const id = headingValue.id || slugify(headingValue.children?.map((child) => child.text || '').join('') || '')
       return (
         <h3 id={id} className="text-2xl font-bold text-slate-900 mt-8 mb-4 scroll-mt-24">
           {children}
@@ -69,7 +102,8 @@ const components: PortableTextComponents = {
       )
     },
     h4: ({ children, value }) => {
-      const id = (value as any).id || slugify(value?.children?.map((child: any) => child.text).join('') || '')
+      const headingValue = value as PortableTextHeadingBlock
+      const id = headingValue.id || slugify(headingValue.children?.map((child) => child.text || '').join('') || '')
       return (
         <h4 id={id} className="text-xl font-semibold text-slate-900 mt-6 mb-3 scroll-mt-24">
           {children}
@@ -146,31 +180,33 @@ const components: PortableTextComponents = {
   },
   types: {
     image: ({ value }) => {
-      if (!value?.asset) return null
+      const imageValue = value as PortableTextImageValue
+      if (!imageValue?.asset) return null
 
-      const imageUrl = urlForImage(value).width(800).url()
+      const imageUrl = urlForImage(imageValue).width(800).url()
 
       return (
         <figure className="my-10">
           <Image
             src={imageUrl}
-            alt={value.alt || 'Blog post image'}
+            alt={imageValue.alt || 'Blog post image'}
             width={800}
             height={450}
             className="rounded-xl w-full h-auto"
           />
-          {value.alt && (
+          {imageValue.alt && (
             <figcaption className="text-center text-sm text-slate-500 mt-3">
-              {value.alt}
+              {imageValue.alt}
             </figcaption>
           )}
         </figure>
       )
     },
     videoEmbed: ({ value }) => {
-      if (!value?.videoUrl || !value?.videoType) return null
+      const videoValue = value as PortableTextVideoValue
+      if (!videoValue?.videoUrl || !videoValue?.videoType) return null
 
-      const embedUrl = getVideoEmbedUrl(value.videoUrl, value.videoType)
+      const embedUrl = getVideoEmbedUrl(videoValue.videoUrl, videoValue.videoType)
 
       if (!embedUrl) {
         return (
@@ -189,21 +225,20 @@ const components: PortableTextComponents = {
               className="absolute top-0 left-0 w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              title={value.caption || 'Embedded video'}
+              title={videoValue.caption || 'Embedded video'}
             />
           </div>
-          {value.caption && (
+          {videoValue.caption && (
             <figcaption className="text-center text-sm text-slate-500 mt-3">
-              {value.caption}
+              {videoValue.caption}
             </figcaption>
           )}
         </figure>
       )
     },
     gifEmbed: ({ value }) => {
-      console.log('gifEmbed renderer called with value:', value)
-      if (!value?.gifUrl) {
-        console.warn('gifEmbed: No gifUrl found in value:', value)
+      const gifValue = value as PortableTextGifValue
+      if (!gifValue?.gifUrl) {
         return null
       }
 
@@ -214,34 +249,37 @@ const components: PortableTextComponents = {
         large: 'max-w-4xl',
         full: 'w-full',
       }
-      const sizeClass = sizeMap[value.size as keyof typeof sizeMap] || sizeMap.medium
+      const sizeClass = sizeMap[gifValue.size] || sizeMap.medium
 
       return (
         <figure className="my-10 flex flex-col items-center">
           <div className={`${sizeClass} w-full`}>
+            {/* Animated GIFs intentionally use img because next/image does not optimize the animation stream. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={value.gifUrl}
-              alt={value.alt || 'Animated GIF'}
+              src={gifValue.gifUrl}
+              alt={gifValue.alt || 'Animated GIF'}
               className="rounded-xl w-full h-auto shadow-lg"
               loading="lazy"
             />
           </div>
-          {value.caption && (
+          {gifValue.caption && (
             <figcaption className="text-center text-sm text-slate-500 mt-3 max-w-2xl">
-              {value.caption}
+              {gifValue.caption}
             </figcaption>
           )}
         </figure>
       )
     },
     table: ({ value }) => {
-      if (!value?.rows || !value.rows.length) return null
+      const tableValue = value as PortableTextTableValue
+      if (!tableValue?.rows || !tableValue.rows.length) return null
 
       return (
         <div className="my-8 overflow-x-auto rounded-lg border border-slate-200 shadow-sm">
           <table className="w-full text-left border-collapse bg-white">
             <tbody>
-              {value.rows.map((row: any, rowIndex: number) => {
+              {tableValue.rows.map((row, rowIndex) => {
                 const isHeader = rowIndex === 0;
                 return (
                   <tr
@@ -279,7 +317,7 @@ const components: PortableTextComponents = {
 }
 
 interface PortableTextProps {
-  value: any
+  value: PortableTextBlock[]
   className?: string
 }
 
@@ -287,9 +325,10 @@ interface PortableTextProps {
 export default function PortableText({ value, className = '' }: PortableTextProps) {
   const valueWithIds = useMemo(() => {
     const counts: Record<string, number> = {}
-    return value?.map((block: any) => {
-      if (block._type === 'block' && ['h1', 'h2', 'h3', 'h4'].includes(block.style)) {
-        const text = block.children?.map((child: any) => child.text).join('') || ''
+    return value?.map((block) => {
+      const blockStyle = block.style
+      if (block._type === 'block' && blockStyle && ['h1', 'h2', 'h3', 'h4'].includes(blockStyle)) {
+        const text = block.children?.map((child) => child.text || '').join('') || ''
         const slug = slugify(text)
         const count = counts[slug] || 0
         counts[slug] = count + 1

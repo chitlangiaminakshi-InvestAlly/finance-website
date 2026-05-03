@@ -17,6 +17,24 @@ export interface GifEmbed {
   size: 'small' | 'medium' | 'large' | 'full'
 }
 
+export interface SanityReferenceAsset {
+  _ref: string
+  _type: 'reference'
+}
+
+export interface PortableTextSpan {
+  _type?: string
+  text?: string
+}
+
+export interface PortableTextBlock {
+  _type: string
+  style?: string
+  children?: PortableTextSpan[]
+  id?: string
+  [key: string]: unknown
+}
+
 export interface SanityImageHotspot {
   x: number
   y: number
@@ -41,10 +59,7 @@ export interface BlogPost {
   }
   excerpt: string
   mainImage?: {
-    asset: {
-      _ref: string
-      _type: 'reference'
-    }
+    asset: SanityReferenceAsset
     alt: string
     hotspot?: SanityImageHotspot
     crop?: SanityImageCrop
@@ -65,16 +80,13 @@ export interface BlogPost {
       current: string
     }
     image?: {
-      asset: {
-        _ref: string
-        _type: 'reference'
-      }
+      asset: SanityReferenceAsset
     }
     role?: string
     bio?: string
   }
   publishedAt: string
-  body: any[] // Portable Text array
+  body: PortableTextBlock[]
   featured: boolean
   tags?: string[]
   readTime?: number
@@ -103,10 +115,7 @@ export interface Author {
     current: string
   }
   image?: {
-    asset: {
-      _ref: string
-      _type: 'reference'
-    }
+    asset: SanityReferenceAsset
   }
   bio?: string
   role?: string
