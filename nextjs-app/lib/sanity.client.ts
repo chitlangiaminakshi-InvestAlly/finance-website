@@ -1,6 +1,5 @@
 import { createClient } from 'next-sanity'
 import { sanityConfig } from './sanity.config'
-import type { QueryParams } from 'next-sanity'
 
 export const client = createClient(sanityConfig)
 
@@ -17,7 +16,7 @@ export async function sanityFetch<QueryResponse>({
   tags,
 }: {
   query: string
-  params?: QueryParams
+  params?: Record<string, any>
   tags?: string[]
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, params, {

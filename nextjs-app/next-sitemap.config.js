@@ -19,7 +19,7 @@ module.exports = {
     changefreq: 'weekly',
     priority: 0.7,
     // Optional: Add additional paths that might not be automatically discovered
-    additionalPaths: async () => {
+    additionalPaths: async (config) => {
         const result = [];
         return result;
     },

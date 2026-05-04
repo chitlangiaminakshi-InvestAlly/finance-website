@@ -1,27 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
-import { useViewportBelow } from "@/hooks/useViewportBelow";
-
-const roles = ["Lawyers", "CXOs", "Professionals", "Business Owners", "Doctors", "Engineers"];
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [roleIndex, setRoleIndex] = useState(0);
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-  const autoAdvanceResumeRef = useRef<number | null>(null);
-  const autoAdvancePausedRef = useRef(false);
-  const isMobile = useViewportBelow(768);
-  const slidesToShow = isMobile ? 1 : 3;
-
-  useEffect(() => {
-    const roleInterval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }, 2000);
-    return () => clearInterval(roleInterval);
-  }, []);
+  const [slidesToShow, setSlidesToShow] = useState(3);
 
   const testimonials = [
     {
@@ -29,7 +13,6 @@ export default function TestimonialsSection() {
       name: "CA Vishal Mittal, CFA",
       role: "Salaried, Private Sector Employee, Age 25, Mumbai",
       initials: "VM",
-      image: "/animations/testimonial-faces/face-1.png",
       products: ["Mutual Funds"]
     },
     {
@@ -37,7 +20,6 @@ export default function TestimonialsSection() {
       name: "Shailesh Tiwari",
       role: "Businessman, Age 60, Jaipur",
       initials: "ST",
-      image: "/animations/testimonial-faces/face-2.png",
       products: ["Mutual Funds"]
     },
     {
@@ -45,7 +27,6 @@ export default function TestimonialsSection() {
       name: "Abhinav Chitlangia",
       role: "Businessman, Age 35, Raxaul, Bihar",
       initials: "AC",
-      image: "/animations/testimonial-faces/face-3.png",
       products: ["Mutual Funds"]
     },
     {
@@ -53,7 +34,6 @@ export default function TestimonialsSection() {
       name: "Ram Gopal Chitlangia",
       role: "Commodity Broker, Age 66, Sikar, Rajasthan",
       initials: "RC",
-      image: "/animations/testimonial-faces/face-4.png",
       products: ["Mutual Funds"]
     },
     {
@@ -61,7 +41,6 @@ export default function TestimonialsSection() {
       name: "Nishant Lakhotiya",
       role: "Businessman, Age 37, Panipat",
       initials: "NL",
-      image: "/animations/testimonial-faces/face-5.png",
       products: ["Mutual Funds"]
     },
     {
@@ -69,7 +48,6 @@ export default function TestimonialsSection() {
       name: "Sarika Lakhotiya",
       role: "Businesswomen, Age 36, Panipat",
       initials: "SL",
-      image: "/animations/testimonial-faces/face-6.png",
       products: ["Mutual Funds"]
     },
     {
@@ -77,7 +55,6 @@ export default function TestimonialsSection() {
       name: "Anurag Rajput",
       role: "IT Consultant, Age 28, Mumbai",
       initials: "AR",
-      image: "/animations/testimonial-faces/face-7.png",
       products: ["Mutual Funds"]
     },
     {
@@ -85,7 +62,6 @@ export default function TestimonialsSection() {
       name: "Saumya",
       role: "Business, Age 30, Mumbai",
       initials: "S",
-      image: "/animations/testimonial-faces/face-8.png",
       products: ["Mutual Funds"]
     },
     {
@@ -93,117 +69,47 @@ export default function TestimonialsSection() {
       name: "Akanksha",
       role: "Salaried, Age 37, Dubai",
       initials: "A",
-      image: "/animations/testimonial-faces/face-9.png",
       products: ["Mutual Funds"]
-    },
+    }
   ];
 
-  const maxIndex = testimonials.length - slidesToShow;
-
-  const goToSlide = (nextIndex: number, behavior: ScrollBehavior = "smooth") => {
-    const boundedIndex = Math.max(0, Math.min(nextIndex, maxIndex));
-
-    if (isMobile && sliderRef.current) {
-      sliderRef.current.scrollTo({
-        left: boundedIndex * sliderRef.current.clientWidth,
-        behavior,
-      });
-    }
-
-    setCurrentIndex(boundedIndex);
-  };
-
-  const pauseAutoAdvance = () => {
-    autoAdvancePausedRef.current = true;
-
-    if (autoAdvanceResumeRef.current) {
-      window.clearTimeout(autoAdvanceResumeRef.current);
-    }
-
-    autoAdvanceResumeRef.current = window.setTimeout(() => {
-      autoAdvancePausedRef.current = false;
-      autoAdvanceResumeRef.current = null;
-    }, 3500);
-  };
-
-  const nextSlide = () => {
-    pauseAutoAdvance();
-    goToSlide(currentIndex >= maxIndex ? 0 : currentIndex + 1);
-  };
-
-  const prevSlide = () => {
-    pauseAutoAdvance();
-    goToSlide(currentIndex <= 0 ? maxIndex : currentIndex - 1);
-  };
-
   useEffect(() => {
+    const handleResize = () => {
+      setSlidesToShow(window.innerWidth >= 768 ? 3 : 1);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
     const interval = setInterval(() => {
-      if (autoAdvancePausedRef.current) return;
-      setCurrentIndex((prev) => {
-        const nextIndex = prev >= maxIndex ? 0 : prev + 1;
-
-        if (isMobile && sliderRef.current) {
-          sliderRef.current.scrollTo({
-            left: nextIndex * sliderRef.current.clientWidth,
-            behavior: "smooth",
-          });
-        }
-
-        return nextIndex;
-      });
+      nextSlide();
     }, 5000);
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       clearInterval(interval);
     };
-  }, [isMobile, maxIndex]);
+  }, [currentIndex]);
 
-  useEffect(() => {
-    if (!isMobile || !sliderRef.current) return;
+  const maxIndex = testimonials.length - slidesToShow;
 
-    const slider = sliderRef.current;
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
 
-    const handleScroll = () => {
-      pauseAutoAdvance();
-      const cardWidth = slider.clientWidth;
-      if (cardWidth === 0) return;
-
-      const nextIndex = Math.round(slider.scrollLeft / cardWidth);
-      setCurrentIndex((prev) => (prev === nextIndex ? prev : Math.min(nextIndex, maxIndex)));
-    };
-
-    slider.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      slider.removeEventListener("scroll", handleScroll);
-    };
-  }, [isMobile, maxIndex]);
-
-  useEffect(() => {
-    return () => {
-      if (autoAdvanceResumeRef.current) {
-        window.clearTimeout(autoAdvanceResumeRef.current);
-      }
-    };
-  }, []);
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
 
   return (
     <section className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
+        <div className="text-center mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Client Stories</span>
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 mt-2 mb-3 flex flex-col items-center justify-center">
-            <span className="mb-1">Trusted by</span>
-            <span className="relative inline-block w-full h-[1.2em]">
-              <span
-                key={roleIndex}
-                className="gradient-text absolute inset-0 text-center animate-[testimonialRoleIn_800ms_cubic-bezier(0.33,1,0.68,1)]"
-              >
-                {roles[roleIndex]}
-              </span>
-            </span>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-3 mb-4">
+            Trusted by <span className="gradient-text">Thousands</span>
           </h2>
-          <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             See what our clients say about their financial journey with Investally.
           </p>
         </div>
@@ -211,19 +117,13 @@ export default function TestimonialsSection() {
         {/* Testimonials Slider Container */}
         <div className="relative">
           {/* Slider Wrapper */}
-          <div
-            ref={sliderRef}
-            className={isMobile ? "overflow-x-auto snap-x snap-mandatory touch-pan-x custom-scrollbar" : "overflow-hidden"}
-          >
+          <div className="overflow-hidden">
             <div
-              className={`flex ${isMobile ? "" : "transition-transform duration-500 ease-in-out"}`}
-              style={isMobile ? undefined : { transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)` }}
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * (100 / slidesToShow)}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className={`w-full ${slidesToShow === 3 ? "md:w-1/3" : ""} flex-shrink-0 px-4 ${isMobile ? "snap-center" : ""}`}
-                >
+                <div key={index} className={`w-full ${slidesToShow === 3 ? 'md:w-1/3' : ''} flex-shrink-0 px-4`}>
                   <div className="bg-white rounded-xl shadow-lg p-8 h-full flex flex-col">
                     {/* Stars at top */}
                     <div className="flex items-center mb-6">
@@ -242,18 +142,8 @@ export default function TestimonialsSection() {
                     {/* Client info at bottom */}
                     <div className="mt-6 pt-6 border-t border-slate-100">
                       <div className="flex items-center mb-3">
-                        <div className="w-14 h-14 rounded-full overflow-hidden bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-4">
-                          {testimonial.image ? (
-                            <Image
-                              src={testimonial.image}
-                              alt={testimonial.name}
-                              width={56}
-                              height={56}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            testimonial.initials
-                          )}
+                        <div className="w-14 h-14 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 mr-4">
+                          {testimonial.initials}
                         </div>
                         <div>
                           <p className="font-bold text-slate-900">{testimonial.name}</p>
@@ -299,10 +189,7 @@ export default function TestimonialsSection() {
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  pauseAutoAdvance();
-                  goToSlide(index <= maxIndex ? index : maxIndex);
-                }}
+                onClick={() => setCurrentIndex(index <= maxIndex ? index : maxIndex)}
                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${currentIndex === index ? 'bg-teal-600' : 'bg-slate-300'
                   }`}
               />
@@ -310,18 +197,6 @@ export default function TestimonialsSection() {
           </div>
         </div>
       </div>
-      <style jsx>{`
-        @keyframes testimonialRoleIn {
-          from {
-            opacity: 0;
-            transform: translateY(15px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </section>
   );
 }

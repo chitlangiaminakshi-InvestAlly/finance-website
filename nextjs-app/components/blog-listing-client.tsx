@@ -5,30 +5,29 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Search } from "lucide-react";
 import { urlForImage } from "@/lib/sanity.image";
-import type { PortableTextBlock, SanityReferenceAsset } from "@/lib/sanity.types";
-
-interface ImageAssetRef {
-  asset: SanityReferenceAsset;
-  alt?: string;
-}
 
 interface BlogPost {
   _id: string;
   title: string;
   slug: { current: string };
   excerpt: string;
-  mainImage?: ImageAssetRef;
+  mainImage?: {
+    asset: any;
+    alt?: string;
+  };
   category?: {
     title: string;
     color?: string;
   };
   author?: {
     name: string;
-    image?: ImageAssetRef;
+    image?: {
+      asset: any;
+    };
   };
   publishedAt: string;
   readTime?: number;
-  body?: PortableTextBlock[];
+  body?: any;
 }
 
 interface BlogListingClientProps {
@@ -151,13 +150,12 @@ export default function BlogListingClient({ posts, categories }: BlogListingClie
                 <article key={post._id} className="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
                   {imageUrl ? (
                     <div className="relative w-full h-48 overflow-hidden">
-                    <Image
-                      src={imageUrl}
-                      alt={post.mainImage?.alt || post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                    />
+                      <Image
+                        src={imageUrl}
+                        alt={post.mainImage?.alt || post.title}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   ) : (
                     <div className="w-full h-48 bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-semibold text-lg">
@@ -186,7 +184,6 @@ export default function BlogListingClient({ posts, categories }: BlogListingClie
                               src={urlForImage(post.author.image).width(32).height(32).url()}
                               alt={post.author.name}
                               fill
-                              sizes="32px"
                               className="object-cover"
                             />
                           </div>
@@ -271,14 +268,14 @@ export default function BlogListingClient({ posts, categories }: BlogListingClie
 }
 
 // Helper function to extract text from Portable Text body
-function extractTextFromBody(body: PortableTextBlock[]): string {
+function extractTextFromBody(body: any): string {
   if (!body || !Array.isArray(body)) return "";
 
   return body
-    .map((block) => {
+    .map((block: any) => {
       if (block._type === "block" && block.children) {
         return block.children
-          .map((child) => child.text || "")
+          .map((child: any) => child.text || "")
           .join(" ");
       }
       return "";
