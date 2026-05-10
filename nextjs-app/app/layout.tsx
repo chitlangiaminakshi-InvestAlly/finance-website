@@ -12,7 +12,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://investally.co.in'),
   title: {
-    default: "InvestAlly - We don't sell Investments - We build Investors",
+    default: "InvestAlly - We don't sell Investments, We build Investors",
     template: "%s | InvestAlly"
   },
   description: "Personalized financial guidance that grows with you - built on trust, transparency, and continuous review. Because wealth creation isn't a one-time act- it's a lifelong relationship.",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://investally.co.in",
     siteName: "InvestAlly",
-    title: "InvestAlly - We don't sell Investments - We build Investors",
+    title: "InvestAlly - We don't sell Investments, We build Investors",
     description: "Personalized financial guidance that grows with you - built on trust, transparency, and continuous review. Because wealth creation isn't a one-time act - it's a lifelong relationship.",
     images: [
       {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "InvestAlly - We don't sell Investments - We build Investors",
+    title: "InvestAlly - We don't sell Investments, We build Investors",
     description: "Personalized financial guidance that grows with you - built on trust, transparency, and continuous review. Because wealth creation isn't a one-time act - it's a lifelong relationship.",
     images: ["/investally_only_logo.png"],
   },
@@ -111,7 +111,7 @@ export default function RootLayout({
                 "height": 512
               },
               "description": "Personalized financial guidance that grows with you - built on trust, transparency, and continuous review. Because wealth creation isn't a one-time act - it's a lifelong relationship.",
-              "slogan": "We don't sell Investments - We build Investors",
+              "slogan": "We don't sell Investments, We build Investors",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Mumbai",
@@ -163,7 +163,7 @@ export default function RootLayout({
         />
 
         {children}
-        <WhatsAppFloat />
+        {!blogOnlyMode && <WhatsAppFloat />}
 
         {/* Tawk.to Live Chat Widget - Hidden in blog-only mode */}
         {/* {!blogOnlyMode && (

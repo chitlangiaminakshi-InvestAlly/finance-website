@@ -78,7 +78,7 @@ export async function getAllPostSlugs(): Promise<string[]> {
 /**
  * Get recent posts (for sidebar)
  */
-export async function getRecentPosts(limit: number = 5): Promise<BlogPost[]> {
+export async function getRecentPosts(): Promise<BlogPost[]> {
   return sanityFetch({
     query: recentPostsQuery,
     tags: ['blogPost'],

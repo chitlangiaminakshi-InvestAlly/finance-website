@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Share2, Link as LinkIcon, Check, Twitter, Facebook, Linkedin, Mail, MessageCircle, X } from "lucide-react";
+import { Share2, Link as LinkIcon, Check, Facebook, Linkedin, Mail, MessageCircle, X } from "lucide-react";
 
 interface ShareButtonProps {
   url: string;

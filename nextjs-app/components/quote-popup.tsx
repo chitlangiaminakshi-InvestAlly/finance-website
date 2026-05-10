@@ -33,25 +33,28 @@ const quotes = [
 
 export default function QuotePopup() {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedQuote, setSelectedQuote] = useState(quotes[0]);
+  const [selectedQuote] = useState(() => quotes[Math.floor(Math.random() * quotes.length)]);
 
   useEffect(() => {
     // Check if popup has been shown in this session
     const hasShownPopup = sessionStorage.getItem("quotePopupShown");
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     if (!hasShownPopup) {
-      // Select a random quote
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      setSelectedQuote(quotes[randomIndex]);
-
       // Show popup after a short delay
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setIsVisible(true);
       }, 1000);
 
       // Mark popup as shown for this session
       sessionStorage.setItem("quotePopupShown", "true");
     }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
   const handleClose = () => {
@@ -97,7 +100,7 @@ export default function QuotePopup() {
                 {selectedQuote.context}
               </p>
               <p className="text-xl md:text-2xl font-bold text-slate-900 leading-relaxed mb-4 italic">
-                "{selectedQuote.text}"
+                &ldquo;{selectedQuote.text}&rdquo;
               </p>
               <p className="text-sm font-medium text-slate-500">
                 — {selectedQuote.author}
