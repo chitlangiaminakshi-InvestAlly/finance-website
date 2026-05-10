@@ -47,7 +47,7 @@ const teamMembers = [
     ],
   },
   {
-    name: "Sailesh Jain",
+    name: "Shailesh Jain",
     title: "Loans Advisor",
     subtitle: "Chartered Accountant",
     linkedin: "https://www.linkedin.com/in/shailesh-jain-322423178",
