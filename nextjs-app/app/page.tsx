@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 
 import Navigation from "@/components/navigation";
 import HeroSection from "@/components/sections/hero-section";
+import ContactSection from "@/components/sections/contact-section";
 import dynamic from "next/dynamic";
 import ScrollReveal from "@/components/scroll-reveal";
 
@@ -16,7 +17,6 @@ const UserJourneySection = dynamic(() => import("@/components/sections/user-jour
 const TeamSection = dynamic(() => import("@/components/sections/team-section"));
 const TestimonialsSection = dynamic(() => import("@/components/sections/testimonials-section"));
 const FAQSection = dynamic(() => import("@/components/sections/faq-section"));
-const ContactSection = dynamic(() => import("@/components/sections/contact-section"));
 const Footer = dynamic(() => import("@/components/footer"));
 const QuotePopup = dynamic(() => import("@/components/quote-popup"));
 
